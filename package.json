@@ -38,6 +38,7 @@
     "react-youtube": "^10.1.0",
     "reactjs-popup": "^2.0.5",
     "reactstrap": "^9.1.5",
+    "server.js": "^1.0.0",
     "styled-components": "^5.3.6",
     "use-history": "^1.4.1",
     "web-vitals": "^2.1.4",
