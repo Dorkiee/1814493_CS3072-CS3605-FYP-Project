@@ -1,4 +1,4 @@
-import {Col, Button, Image } from 'react-bootstrap';
+import {Col, Button } from 'react-bootstrap';
 import "./CSS/HomePage.css"
 
 const Home = () => {
@@ -48,7 +48,7 @@ placeholder="Password"
 Login
 </Button>
 <div className="mt-3 text-center">
-Don't have an account? <a herf ="/register">Sign up</a>
+Don't have an account? Sign up
 </div>
 </form>
 </div>
