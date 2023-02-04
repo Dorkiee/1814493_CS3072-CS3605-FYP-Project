@@ -54,15 +54,15 @@ const userModel = mongoose.Schema(
 
     courseName: {
       type: String,
-      required: true
+      required: false //set this to true after creation of content
     },
     courseOutline: {
       type: String,
-      required: true,
+      required: false,//set this to true after creation of content
     },
     curriculumContent: {
       type:String,
-      required: true,
+      required: false, //set this to true after creation of content
     },
     curriculumVids: { 
       type:String,

@@ -5,6 +5,7 @@ import Home from "./HomePage.js"
 import UserSignup from '../employee_pages/signup.js';
 import SelectSignup from '../main_pages/selectSignUp.js'
 import AdminSignup from '../soc_pages/adminSignup.js';
+import Dashboard from "../main_pages/Dashboard.js";
 
 const App = () => {
   return (
@@ -15,6 +16,9 @@ const App = () => {
           <Route path="/select-sign-up" element={<SelectSignup/>} />
           <Route path="/sign-up" element={<UserSignup/>} />
           <Route path="/sign-up-admin" element={<AdminSignup/>} />
+
+          <Route path="/Dashboard" element={<Dashboard/>} />
+
           </Routes>
       </Router> 
     </div>
