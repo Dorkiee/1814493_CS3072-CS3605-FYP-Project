@@ -1,5 +1,6 @@
 import {Col, Button } from 'react-bootstrap';
 import "./CSS/HomePage.css"
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
 
@@ -48,7 +49,10 @@ placeholder="Password"
 Login
 </Button>
 <div className="mt-3 text-center">
-Don't have an account? Sign up
+Don't have an account?
+<NavLink className="nav-link" to="/select-sign-up" exact title="Signup">
+   Register
+</NavLink>
 </div>
 </form>
 </div>

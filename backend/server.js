@@ -2,8 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
-import userRoutes from './routes/userRoutes.js'
-import courseRoutes from './routes/courseRoutes.js'
+import userRoutes from './Routes/userRoutes.js'
 import cors from 'cors'
 
 const app = express()
@@ -17,7 +16,6 @@ mongoose.connect(process.env.DATABASE_ACCESS, () =>console.log("Database connect
 app.use(express.json())
 app.use(cors())
 app.use('/app', userRoutes)
-app.use('/app', courseRoutes)
 app.use((req, res, next) => {
   const error = new Error(`Not found -${req.originalUrl}`)
   res.status(404)
