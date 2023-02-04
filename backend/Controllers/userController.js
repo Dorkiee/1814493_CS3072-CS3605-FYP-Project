@@ -117,6 +117,23 @@ userController.get("/log-in", async (request, response, next) => {
     .catch(next);
 });
 
+userController.post("/Dashboard", async (request, response) => {
+    const {token} = request.body;
+    try {
+        const user = jwt.verify (token, JWT_SECRET);
+        const usermail = user.email;
+        User.findOne({email: usermail})
+        .then((data) => {
+            response.send({status: "ok", data: data});
+        })
+        .catch((error) => {
+            response.send({status: "error", data: error});
+        });
+    } catch (error) {
+
+    }
+});
+
 
 
 export default userController;

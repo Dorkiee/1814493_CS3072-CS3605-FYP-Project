@@ -55,7 +55,7 @@ export default class DashboardNav extends Component {
           <li><NavLink to="/Department" exact title="Department"><i></i>Department</NavLink></li>
           <li><NavLink to="/Training" exact title="Training"><i></i>Training</NavLink></li>
           <li><NavLink to="/ExaminationPortal" exact title="Examination"><i></i>Examination</NavLink></li>
-          <li><a href="/home" onClick={this.signOut}>Sign out</a></li>
+          <li><a href="/" onClick={this.signOut}>Sign out</a></li>
           </ul> 
           </>
           ) : (
@@ -64,7 +64,7 @@ export default class DashboardNav extends Component {
             <li><NavLink to="/Dashboard" exact title="EDashboard"><i></i>Dashboard</NavLink></li>
             <li><NavLink to="/Current-Training" exact title="Training"><i></i>Current Training</NavLink></li>
             <li><NavLink to="/Examination" exact title="Exam"><i></i>Examination</NavLink></li>
-            <li><a href="/home" onClick={this.signOut}>Sign out</a></li>
+            <li><a href="/" onClick={this.signOut}>Sign out</a></li>
           </ul>        
           </>
           ) } 
