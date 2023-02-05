@@ -49,10 +49,8 @@ export default class DashboardNav extends Component {
           {isAdmin? (
           <>
           <ul> {/* have a boolean to check if this isAdmin */}
-          <li><NavLink to="/Get-Started" exact title="Get Started"><i></i>Get Started</NavLink></li>
           <li><NavLink to="/Dashboard" exact title="Dashboard"><i></i>Dashboard</NavLink></li>
           <li><NavLink to="/Users" exact title="Users"><i></i>Users</NavLink></li>
-          <li><NavLink to="/Department" exact title="Department"><i></i>Department</NavLink></li>
           <li><NavLink to="/Training" exact title="Training"><i></i>Training</NavLink></li>
           <li><NavLink to="/ExaminationPortal" exact title="Examination"><i></i>Examination</NavLink></li>
           <li><a href="/" onClick={this.signOut}>Sign out</a></li>
