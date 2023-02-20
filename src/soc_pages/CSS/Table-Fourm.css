@@ -1,0 +1,45 @@
+.Tabelcontainer {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .Tabelcontainer td, .Tabelcontainer th {
+    border: 0px solid #ddd;
+    padding: 8px;
+  }
+  
+  .Tabelcontainer tr:nth-child(even){background-color: #f2f2f2;}
+  
+  .Tabelcontainer tr:hover {background-color: #ddd;}
+  
+.Tabelcontainer th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2b2d42;
+    color: white;
+}
+
+.table-content {
+    margin-left: 70px;
+    width: 900px;
+}
+
+@media only screen and (max-width:1024px) {
+    table,thead,tbody,th,td,tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+        }
+
+    tr{border:1px solid var(--border);}
+
+    td{
+        border:none;
+        position:relative;
+    }
+}

@@ -88,6 +88,29 @@ userController.post('/sign-up-admin', async (request, response) => {
       }
 })
 
+
+userController.post('/examinationResults', async (request, response) => {
+
+    try {
+
+        const examination = new userModel({
+            examResults:request.body.examResults,
+            firstName:request.body.firstName,
+            lastName:request.body.lastName,
+        })
+        examination.save()
+        .then(data =>{
+            response.json(data)
+        })
+        .catch (error =>{
+            response.json(error)
+        })
+
+    } catch (error) {
+        response.send({ status: "error" });
+      }
+})
+
 userController.post('/log-in', async (request, response) => {
 
     const {email, password} = request.body;
@@ -134,6 +157,34 @@ userController.post("/Dashboard", async (request, response) => {
     }
 });
 
+userController.get("/log-in", async (request, response, next) => {
+    User.find({})
+    .then((data) => response.json(data))
+    .catch(next);
+});
 
+userController.get("/edits/:id", async (request, response, next) => {
+    User.findById(request.params.id)
+    .then(user => response.json(user))
+    .catch(error =>response.status(404).json({error: 'no empolyee'}))
+});
+
+userController.put("/update/:id", async (request, response, next) => {
+        User.findByIdAndUpdate(request.params.id, request.body)
+        .then(user => response.json({ msg: 'Updated successfully' }))
+        .catch(err =>
+            response.status(400).json({ error: 'Unable to update the Database' })
+        );
+    
+});
+
+userController.delete("/deleteUser/:id", async (request, response, next) => {
+    User.findByIdAndRemove(request.params.id, request.body)
+    .then(user => response.json({ msg: 'User deleted successfully' }))
+    .catch(err =>
+        response.status(404).json({ error: 'Unable to delete user from the Database' })
+    );
+
+});
 
 export default userController;

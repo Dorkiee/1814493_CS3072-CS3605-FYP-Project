@@ -69,6 +69,29 @@ const userModel = mongoose.Schema(
       required: false,
     },
 
+    completedContent: {
+      type: Boolean,
+      required: false,
+    },
+  
+    taskStatus : {
+      type: Number,
+      default: 0,
+      required: false,
+    }, 
+
+    courseNo: {
+      type: Number, 
+      default: 0,
+      require: false,
+    },
+
+    examResults: {
+      type: Number,
+      default: 0,
+      require: false,
+    }
+
     //have a module for completing a course
   },
   {
