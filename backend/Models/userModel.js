@@ -86,7 +86,7 @@ const userModel = mongoose.Schema(
       require: false,
     },
 
-    examResults: {
+    score: {
       type: Number,
       default: 0,
       require: false,

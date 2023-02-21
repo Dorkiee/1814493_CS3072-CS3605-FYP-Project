@@ -94,7 +94,7 @@ userController.post('/examinationResults', async (request, response) => {
     try {
 
         const examination = new userModel({
-            examResults:request.body.examResults,
+            score:request.body.score,
             firstName:request.body.firstName,
             lastName:request.body.lastName,
         })

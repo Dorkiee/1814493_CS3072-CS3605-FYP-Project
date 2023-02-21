@@ -22,6 +22,8 @@ import CurrentTraining from "../employee_pages/currentTraining.js"
 import EnrolledDetail from "../employee_pages/enrollDetail.js"
 import ExamContent from "../employee_pages/Exam.js";
 
+import GameCourse from "../soc_pages/UnityGame";
+
 const App = () => {
   return (
     <div>
@@ -46,6 +48,8 @@ const App = () => {
           <Route path="/Current-Training" element={<CurrentTraining/>}/>
           <Route path="/mycourse/:id" element={<EnrolledDetail/>}/>
           <Route path="/Examination" element={<ExamContent/>}></Route>
+
+          <Route path="/Phishing-Adventure" element={<GameCourse/>}></Route>
           </Routes>
       </Router> 
     </div>
