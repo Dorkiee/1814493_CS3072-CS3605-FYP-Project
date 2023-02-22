@@ -11,7 +11,7 @@ class createCourse extends Component {
          courseOutline: '',
          curriculumContent:'',
          curriculumVids:'',
-         //CurriculumGames:'',
+         curriculumGame: false,
         // Examinations:'',
        //  totalUsers: '',
         }
@@ -19,6 +19,7 @@ class createCourse extends Component {
         this.changecourseOutline = this.changecourseOutline.bind(this)
         this.changecurriculumContent = this.changecurriculumContent.bind(this)
         this.changecurriculumVids = this.changecurriculumVids.bind(this)
+        this.changecurriculumGame = this.changecurriculumGame.bind(this)
       //  this.changeExaminations = this.changeExaminations.bind(this)
        // this.changetotalUsers = this.changetotalUsers.bind(this)
        this.onSubmit = this.onSubmit.bind(this)
@@ -49,6 +50,12 @@ class createCourse extends Component {
       } 
 
     
+      changecurriculumGame(event) {
+        this.setState({
+          curriculumGame:event.target.checked
+         })
+      } 
+
       onSubmit(event) {
         event.preventDefault()
       
@@ -57,7 +64,7 @@ class createCourse extends Component {
             courseOutline: this.state.courseOutline,
             curriculumContent:this.state.curriculumContent,
            curriculumVids:this.state.curriculumVids,
-           // CurriculumGames:this.state.CurriculumGames,
+           curriculumGame:this.state.curriculumGame,
           //  Examinations:this.state.Examinations
         }
     
@@ -69,7 +76,7 @@ class createCourse extends Component {
                 courseOutline: '',
                 curriculumContent:'',
                 curriculumVids:'',
-             //   CurriculumGames:'',
+                curriculumGame:false,
               //  Examinations:'',
             })
 
@@ -130,6 +137,18 @@ class createCourse extends Component {
                   value={this.state.curriculumVids}
                   />
               </div>
+
+              <div> {/* have two sign up pages -- have a drop down to select registed company -- if company not listed, send request to IT department for them to sign up?*/}
+                <label>Assign Game</label>
+                  <input  
+                  type="checkbox" 
+                  id="CurriculumGame" 
+                  className="game content"
+                  checked={this.state.curriculumGame}
+                  onChange={this.changecurriculumGame}
+                  />
+              </div>
+
               <div className='d-grid'>
               <button type='submit' className='btn btn-primary' value='Submit'>
                 Create

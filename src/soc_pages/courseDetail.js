@@ -18,10 +18,12 @@ class courseDetail extends Component {
         courseOutline: '',
         curriculumContent: '',
         curriculumVids: '',
+        curriculumGame: '',
       }
     this.onChangeCourseName = this.onChangeCourseName.bind(this);
     this.onChangecourseOutline = this.onChangecourseOutline.bind(this);
     this.onChangecurriculumContent = this.onChangecurriculumContent.bind(this);
+    this.onChangecurriculumGame = this.onChangecurriculumGame.bind(this);
     this.onDeleteCourse = this.onDeleteCourse.bind(this);
 
     this.changeEcourseName = this.changeEcourseName.bind(this);
@@ -44,6 +46,7 @@ class courseDetail extends Component {
         courseOutline: response.data.courseOutline,
         curriculumContent: response.data.curriculumContent,
         curriculumVids: response.data.curriculumVids,
+        curriculumGame: response.data.curriculumGame,
         });
       })
       .catch((error) => {
@@ -79,6 +82,7 @@ class courseDetail extends Component {
       courseName:this.state.courseName,
       courseOutline: this.state.courseOutline,
       curriculumContent:this.state.curriculumContent,
+      curriculumGame: this.state.curriculumGame,
     }
 
      axios.post('http://localhost:4000/app/enrolledcourse', asignedCourses)
@@ -88,6 +92,7 @@ class courseDetail extends Component {
                 courseName: '',
                 courseOutline: '',
                 curriculumContent:'',
+                curriculumGame: '',
             })
   }
 
@@ -101,6 +106,10 @@ class courseDetail extends Component {
 
   onChangecurriculumContent (event) {
     this.setState({curriculumContent: event.target.value})
+  }
+
+  onChangecurriculumGame (event) {
+    this.setState({curriculumGame: event.target.checked})
   }
 
 /////////////

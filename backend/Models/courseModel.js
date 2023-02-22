@@ -19,6 +19,11 @@ const courseModel = mongoose.Schema(
 		required: false,
 	},
 
+	curriculumGame: { //REMOVE AND CREATE IT'S OWN MODEL
+		type:Boolean,
+		required: false,
+	},
+
 	taskStatus : {
 		type: Number,
 		required: false,

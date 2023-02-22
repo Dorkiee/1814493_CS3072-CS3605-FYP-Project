@@ -19,6 +19,12 @@ const curriculumModel = mongoose.Schema(
 		required: false,
 	},
 
+	curriculumGame: {
+		type: Boolean,
+		required: false,
+	},
+	
+
 	completedContent: {
 		type: Boolean,
 		required: false,

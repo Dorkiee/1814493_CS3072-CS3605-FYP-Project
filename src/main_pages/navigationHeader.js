@@ -43,11 +43,21 @@ render () {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg shadow" style={{ backgroundColor: '#1b2430' }}>
+      <nav className="navbar navbar-expand-lg shadow" style={{ backgroundColor: 'white' }}>
         <div className="container">
-          <NavLink className="navbar-brand fs-3 fw-bold" to="/home" exact>
-            <h1 style={{ color: 'white' }}>Logo Here</h1>
+        {loggedIn? (
+                <>
+          <NavLink className="navbar-brand fs-3 fw-bold" to="/Dashboard" exact>
+            <h1 style={{ color: '#1b68b3' }}>PhishShield</h1>
           </NavLink>
+          </>
+          ) : (
+            <>
+            <NavLink className="navbar-brand fs-3 fw-bold" to="/" exact>
+            <span style={{ color: '#f77c1b' }}>P</span><span style={{ color: '#1b68b3' }}>hish</span><span style={{ color: '#f77c1b' }}>S</span><span style={{ color: '#1b68b3' }}>hield</span>
+          </NavLink>
+          </>    
+          ) }
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -64,10 +74,13 @@ render () {
                 </>
                 ) : (
                   <>
-                    <NavLink className="nav-link" to="/about" exact title="about">
-                      About
+                    <NavLink className="nav-link" to="/log-in" exact title="Login">
+                      Login
                     </NavLink>
                     <ul></ul>
+                    <NavLink className="nav-link" to="/sign-up" exact title="Signup">
+                      Register
+                    </NavLink>
                   </>
                 ) }                        
             </div>

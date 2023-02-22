@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import "bootstrap/dist/css/bootstrap.min.css"
+import "../main_pages/CSS/signForm.css"
 
 class signup extends Component {
   constructor () {
@@ -176,7 +176,11 @@ class signup extends Component {
           </div>
           </form>
           </div>
-
+          <br></br>
+          <br></br>
+          <footer className='footerLogin'>
+          <p>&copy; 2023 PhishShield, developed by Kehinde Oduyeye 1814493</p>
+          </footer>  
       </div>   
   );
 }

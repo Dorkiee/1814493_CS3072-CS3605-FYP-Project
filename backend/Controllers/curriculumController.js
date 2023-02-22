@@ -22,6 +22,7 @@ curriculumController.post('/enrolledcourse', async (request, response) => { //ad
             courseOutline:request.body.courseOutline,
             curriculumContent: request.body.curriculumContent,
             curriculumVids:request.body.curriculumVids,
+            curriculumGame: request.body.curriculumGame,
             completedContent:request.body.completedContent, 
             taskStatus: request.body.taskStatus,
         })

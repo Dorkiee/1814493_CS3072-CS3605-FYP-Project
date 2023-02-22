@@ -23,6 +23,7 @@ courseController.post('/createcourse', async (request, response) => { //admin us
             courseOutline:request.body.courseOutline,
             curriculumContent: request.body.curriculumContent,
             curriculumVids:request.body.curriculumVids,
+            curriculumGame: request.body.curriculumGame
            // CurriculumGames:request.body.CurriculumGames,
            // totalUsers:request.body.totalUsers,
            // createdBy:request.body.createdBy,
