@@ -103,6 +103,18 @@ class signup extends Component {
         })
   }
 
+  validationPin = event => { //testing validation, pin must be higher than 4 but less than 6 for format to be submitted 
+    const pin = event.target.value;
+    const isValid = /^[0-9]{4,6}$/.test(pin);
+
+    if (isValid) {
+      this.setState({ errorMessage: '' });
+    } else {
+      this.setState({ errorMessage: 'incorrect format 4-6 digits, please try again' });
+    }
+  };
+
+
   render () {
     return (
     <div>
@@ -111,13 +123,14 @@ class signup extends Component {
           <h3 className='text-wrapper'>Sign Up Today</h3>
           <br></br>
           <div className='mb-3'>
-              <label>username</label>
+              <label>Username</label>
               <input type="text" 
               id="username" 
               className="form-control"
-              placeholder="username *"
+              placeholder="Username *"
               onChange={this.changeUsername}
               value={this.state.username}
+              required
               />
           </div>
           <div className="mb-3">
@@ -128,6 +141,7 @@ class signup extends Component {
                placeholder="First Name *"
                onChange={this.changeFirstName}
               value={this.state.firstName}
+              required
                />
           </div>
           <div className="mb-3">
@@ -138,29 +152,42 @@ class signup extends Component {
               placeholder="Last Name *"
               onChange={this.changeLastName}
               value={this.state.lastName}
+              required
               />
           </div>
           <div className="mb-3">
             <label>Age</label>
-              <input className="form-control" 
+            <br></br>
+            <select 
+            className="dropdown-select" 
               type="age" 
               id="age" 
-              placeholder="Enter your age"
+              placeholder="Select your age *"
               onChange={this.changeAge}
               value={this.state.age}
-              />
+              required
+              >
+                <option value="">Please select an option *</option>
+                <option value="18 to 24">18 to 24</option>
+                <option value="25 to 34">25 to 34</option>
+                <option value="35 to 44">35 to 44</option>
+                <option value="45 to 54">45 to 54</option>
+                <option value="55 to 64">55 to 64</option>
+                <option value="65 or over">65 or over</option>
+                </select>
           </div>
           <div className="mb-3"> {/* have two sign up pages -- have a drop down to select registed company -- if company not listed, send request to IT department for them to sign up?*/}
-            <label>Profession *</label>
+            <label>Profession</label>
             <br></br>
               <select  
               id="companyName dropdown" 
               className="dropdown-select" 
-              placeholder="Select your company"
+              placeholder="Select an option"
               onChange={this.changeCompanyName}
               value={this.state.companyName}
+              required
               >
-                <option value="">Select an option</option>
+                <option value="">Please select an option *</option>
                 <option value="Indivior">Indivior Employee</option>
                 <option value="brunel">Brunel Student</option>
                 <option value="public">Member of public</option>
@@ -182,8 +209,11 @@ class signup extends Component {
               type="pin"  
               id="pin" 
               placeholder="pin *"
+              pattern="[0-9]{4,6}"
               onChange={this.changepin}
               value={this.state.pin}
+              onBlur={this.validatePin}
+              required
               />
           </div>
           <div className='d-grid'>
