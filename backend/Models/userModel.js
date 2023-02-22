@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose, { trusted } from 'mongoose'
 const userModel = mongoose.Schema(
   {
     registered_by: {
@@ -14,14 +14,19 @@ const userModel = mongoose.Schema(
       type: String,
       required: true,
     },
-    email:{
+    username:{
       type:String,
       required:true
     },
-    password:{
+    pin:{
       type:String,
       required:true
     },
+    age: {
+      type:Number,
+      required: true
+    }, 
+    
     companyName: {
       type:String,
       required:true,

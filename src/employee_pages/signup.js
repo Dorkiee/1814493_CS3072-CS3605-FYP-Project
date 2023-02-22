@@ -6,28 +6,30 @@ class signup extends Component {
   constructor () {
     super ()
     this.state = {
-      email: '',
+      username: '',
       firstName: '',
       lastName:'',
       companyName:'',
+      age: '',
       department:'',
       role:'',
       isAdmin: false,
       isModerator: false,
-      password: ''
+      pin: ''
     }
-    this.changeEmail = this.changeEmail.bind(this)
+    this.changeUsername = this.changeUsername.bind(this)
     this.changeFirstName = this.changeFirstName.bind(this)
     this.changeLastName = this.changeLastName.bind(this)
     this.changeCompanyName = this.changeCompanyName.bind(this)
-    this.changePassword = this.changePassword.bind(this)
+    this.changepin = this.changepin.bind(this)
     this.changeDepartment = this.changeDepartment.bind(this)
+    this.changeAge = this.changeAge.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
   }
 
-  changeEmail(event) {
+  changeUsername(event) {
     this.setState({
-      email:event.target.value
+      username:event.target.value
     })
   }
 
@@ -49,9 +51,9 @@ class signup extends Component {
     })
   } 
 
-  changePassword(event) {
+  changepin(event) {
     this.setState({
-      password:event.target.value
+      pin:event.target.value
     })
   }
 
@@ -61,35 +63,43 @@ class signup extends Component {
     })
   }
 
+  changeAge(event) {
+    this.setState({
+      age:event.target.value
+    })
+  }
+
   onSubmit(event) {
     event.preventDefault()
   
     const registered = {
       registered_by: 'admin',
-        email:this.state.email,
+        username:this.state.username,
         firstName: this.state.firstName,
         lastName:this.state.lastName,
         companyName:this.state.companyName,
+        age:this.state.age,
         role:'user',
         department:this.state.department,
         isAdmin: false,
         isModerator: false,
-        password:this.state.password
+        pin:this.state.pin
     }
 
     axios.post('http://localhost:4000/app/sign-up', registered)
    .then(response => console.log(response.data))
 
         this.setState({
-          email: '',
+          username: '',
             firstName:'',
             lastName:'',
             companyName: '',
+            age: '',
             department:'',
             role:'',
             isAdmin: false,
             isModerator: false,
-            password: '',
+            pin: '',
         })
   }
 
@@ -101,13 +111,13 @@ class signup extends Component {
           <h3 className='text-wrapper'>Sign Up Today</h3>
           <br></br>
           <div className='mb-3'>
-              <label>Email Address</label>
-              <input className="form-control" 
-              type="email" 
-              id="email" 
-              placeholder="Email *"
-              onChange={this.changeEmail}
-              value={this.state.email}
+              <label>username</label>
+              <input type="text" 
+              id="username" 
+              className="form-control"
+              placeholder="username *"
+              onChange={this.changeUsername}
+              value={this.state.username}
               />
           </div>
           <div className="mb-3">
@@ -130,43 +140,50 @@ class signup extends Component {
               value={this.state.lastName}
               />
           </div>
+          <div className="mb-3">
+            <label>Age</label>
+              <input className="form-control" 
+              type="age" 
+              id="age" 
+              placeholder="Enter your age"
+              onChange={this.changeAge}
+              value={this.state.age}
+              />
+          </div>
           <div className="mb-3"> {/* have two sign up pages -- have a drop down to select registed company -- if company not listed, send request to IT department for them to sign up?*/}
-            <label>Company Name</label>
-              <input  type="text" 
-              id="companyName" 
-              className="form-control" 
-              placeholder="Drop down box here"
+            <label>Profession *</label>
+            <br></br>
+              <select  
+              id="companyName dropdown" 
+              className="dropdown-select" 
+              placeholder="Select your company"
               onChange={this.changeCompanyName}
               value={this.state.companyName}
-              /> <a href="/home">not listed?</a>
+              >
+                <option value="">Select an option</option>
+                <option value="Indivior">Indivior Employee</option>
+                <option value="brunel">Brunel Student</option>
+                <option value="public">Member of public</option>
+                </select>
           </div>
           <div className="mb-3"> {/* have two sign up pages -- have a drop down to select registed company -- if company not listed, send request to IT department for them to sign up?*/}
             <label>Department</label>
               <input  type="text" 
               id="department" 
               className="form-control" 
-              placeholder="Drop down box here"
+              placeholder="Department Name"
               onChange={this.changeDepartment}
               value={this.state.department}
               />
           </div>
           <div className="mb-3">
-            <label>Password</label>
+            <label>pin</label>
               <input className="form-control" 
-              type="password"  
-              id="password" 
-              placeholder="Password *"
-              onChange={this.changePassword}
-              value={this.state.password}
-              />
-          </div>
-          <div className="mb-3">
-            <label>Confirm Password</label>
-              <input className="form-control" 
-              type="password" 
-              id="confirmPassword" 
-              placeholder="Confirm Password *"
-              
+              type="pin"  
+              id="pin" 
+              placeholder="pin *"
+              onChange={this.changepin}
+              value={this.state.pin}
               />
           </div>
           <div className='d-grid'>

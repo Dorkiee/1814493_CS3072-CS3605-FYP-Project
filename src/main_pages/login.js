@@ -5,23 +5,23 @@ import React, { Component } from 'react';
 import "./CSS/signForm.css"
 
 //NEED TO DISTINGUSION WITH USER WANTS TO LOGIN AND POST THE RIGHT DATA BASED ON ROLE??? 
-//TICK "isAdmin" TO TRUE IF EMAIL MATCH ADMIN USER'S EMAIL AND LOG THEM INTO THE SOC_DASHBOARD ??
+//TICK "isAdmin" TO TRUE IF username MATCH ADMIN USER'S username AND LOG THEM INTO THE SOC_DASHBOARD ??
 
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: "",
+      username: "",
+      pin: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const { email, password } = this.state;
-    console.log(email, password);
+    const { username, pin } = this.state;
+    console.log(username, pin);
     fetch("http://localhost:4000/app/log-in", {
       method: "POST",
       crossDomain: true,
@@ -31,8 +31,8 @@ class Login extends Component {
         "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
-        email,
-        password,
+        username,
+        pin,
       }),
     })
       .then((res) => res.json())
@@ -58,20 +58,20 @@ render () {
       <div className="mb-3">
         <label>Username</label>
         <input
-          type="email"
+          type="username"
           className="form-control"
-          placeholder="Enter email"
-          onChange={(e) => this.setState({ email: e.target.value })}
+          placeholder="Enter username"
+          onChange={(e) => this.setState({ username: e.target.value })}
         />
       </div>
       <br></br>
       <div className="mb-3">
         <label>Pin</label>
         <input
-          type="password"
+          type="pin"
           className="form-control"
-          placeholder="Enter password"
-          onChange={(e) => this.setState({ password: e.target.value })}
+          placeholder="Enter pin"
+          onChange={(e) => this.setState({ pin: e.target.value })}
         />
       </div>
       <br></br>
@@ -81,8 +81,9 @@ render () {
           Submit
         </button>
       </div>
-      <p className="forgot-password text-right">
-        <a href="/sign_up">Sign Up</a>
+      <br></br>
+      <p className="forgot-pin text-right">
+        <a href="/sign-up">Register</a>
       </p>
     </form> 
     
