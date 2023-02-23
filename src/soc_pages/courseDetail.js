@@ -24,11 +24,13 @@ class courseDetail extends Component {
     this.onChangecourseOutline = this.onChangecourseOutline.bind(this);
     this.onChangecurriculumContent = this.onChangecurriculumContent.bind(this);
     this.onChangecurriculumGame = this.onChangecurriculumGame.bind(this);
+    this.onChangecurriculumVids = this.onChangecurriculumVids.bind(this);
     this.onDeleteCourse = this.onDeleteCourse.bind(this);
 
     this.changeEcourseName = this.changeEcourseName.bind(this);
     this.changeEcourseOutline = this.changeEcourseOutline.bind(this);
     this.changeEcurriculumContent = this.changeEcurriculumContent.bind(this);
+    this.onChangeEcurriculumVids = this.onChangeEcurriculumVids.bind(this);
     this.enrollCourse = this.enrollCourse.bind(this);
   }
 
@@ -82,6 +84,7 @@ class courseDetail extends Component {
       courseName:this.state.courseName,
       courseOutline: this.state.courseOutline,
       curriculumContent:this.state.curriculumContent,
+      curriculumVids: this.state.curriculumVids,
       curriculumGame: this.state.curriculumGame,
     }
 
@@ -92,6 +95,7 @@ class courseDetail extends Component {
                 courseName: '',
                 courseOutline: '',
                 curriculumContent:'',
+                curriculumVids: '',
                 curriculumGame: '',
             })
   }
@@ -112,6 +116,10 @@ class courseDetail extends Component {
     this.setState({curriculumGame: event.target.checked})
   }
 
+  onChangecurriculumVids (event) {
+    this.setState({curriculumVids: event.target.value})
+  }
+
 /////////////
   changeEcourseName(event) {
     this.setState({ courseName: event.target.value })
@@ -125,11 +133,17 @@ class courseDetail extends Component {
     this.setState({curriculumContent: event.target.value})
   }
 
+  onChangeEcurriculumVids (event) {
+    this.setState({curriculumVids: event.target.value})
+  }
 
   render() {
     window.addEventListener('message', (event) => {
       console.log('Received message from the source window:', event.data);
     });
+   // checking if the video link is given
+    const videoLink = this.state.curriculumVids;
+    const isVideo = videoLink.includes("youtube.com");
     return (
     <div>
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
@@ -161,7 +175,13 @@ class courseDetail extends Component {
       <div><h1>{this.state.courseName} Course</h1></div>
       <div><h3>{this.state.courseOutline}</h3></div>  
       <div style={{ whiteSpace: "pre-wrap" }}>{this.state.curriculumContent}</div>
-      
+      {isVideo  ? (
+      <>
+      <div><iframe width="900" height="500" src={this.state.curriculumVids} frameborder="0" allowFullScreen></iframe></div> 
+      </>
+      ) : (
+      <p>This course has no video</p>
+      )}
       <div><button 
       type='setup' 
       className='btn btn-primary' 

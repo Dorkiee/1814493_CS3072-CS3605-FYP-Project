@@ -129,6 +129,7 @@ class createCourse extends Component {
               </div>
               <div className="mb-3"> {/* have two sign up pages -- have a drop down to select registed company -- if company not listed, send request to IT department for them to sign up?*/}
                 <label>Upload a video</label>
+                <p>The YouTube URL must contain "embed" rather than "watch" since the /embed endpoint enables external calls while the /watch endpoint does not.</p>
                   <input  type="text" 
                   id="CurriculumVids" 
                   className="form-control" 

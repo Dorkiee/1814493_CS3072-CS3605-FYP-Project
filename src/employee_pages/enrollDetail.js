@@ -25,11 +25,13 @@ class enrollDetail extends Component {
         courseName: '',
         courseOutline: '',
         curriculumContent: '',
+        curriculumVids: '',
         curriculumGame: false,
       }
     this.onChangeCourseName = this.onChangeCourseName.bind(this);
     this.onChangecourseOutline = this.onChangecourseOutline.bind(this);
     this.onChangecurriculumContent = this.onChangecurriculumContent.bind(this);
+    this.onChangecurriculumVids = this.onChangecurriculumVids.bind(this);
     this.onChangecurriculumGame = this.onChangecurriculumGame.bind(this);
     this.taskUpdate = React.createRef();
   }
@@ -44,6 +46,7 @@ class enrollDetail extends Component {
         courseName: response.data.courseName,
         courseOutline: response.data.courseOutline,
         curriculumContent: response.data.curriculumContent,
+        curriculumVids: response.data.curriculumVids,
         curriculumGame: response.data.curriculumGame, 
         });
         console.log(response);
@@ -72,7 +75,14 @@ class enrollDetail extends Component {
     this.setState({curriculumGame: event.target.checked})
   }
 
+  onChangecurriculumVids (event) {
+    this.setState({curriculumVids: event.target.value})
+  }
+
   render() {
+      // checking if the video link is given
+      
+      
     return (
     <div>
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
@@ -81,19 +91,27 @@ class enrollDetail extends Component {
     <div class="main_content">
     <div class="info">
       <div><h1>{this.state.courseName} Course</h1></div>
-      <div>{this.state.courseOutline}</div>  
+      <div><h3>{this.state.courseOutline}</h3></div> 
+      {this.state.curriculumVids && this.state.curriculumVids.includes('youtube') ? (
+      <iframe width="900" height="500" src={this.state.curriculumVids} frameborder="0" allowFullScreen></iframe>
+      ) : (
+        <p>This course has no video content.</p>
+      )}
+      <br></br>
+      <br></br>
       <div style={{ whiteSpace: "pre-wrap" }}>{this.state.curriculumContent}</div>
       <br></br>
       <br></br>
-      {this.state.curriculumGame && (<Unity unityContext={unityContext} 
-              style={{
-                height: 700,
-                width: 1010,
-                border: "2px solid black",
-                background: "grey",
-              }}
-        />
-      )}
+
+    <Unity unityContext={unityContext} 
+          style={{
+            height: 700,
+            width: 1010,
+            border: "2px solid black",
+            background: "grey",
+          }}
+    />
+
       <div><button onClick={() => editUsers.current.onCompleteTask()}>Complete Course</button></div>
     </div>
     </div>
