@@ -50,10 +50,10 @@ const userModel = mongoose.Schema(
       required: true,
       default: false,
     },
-    isModerator: {
+    isUser: {
       type: Boolean,
       required: true,
-      default: false,
+      default: true,
     },
 
 

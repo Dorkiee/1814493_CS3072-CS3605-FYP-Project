@@ -36,7 +36,7 @@ userController.post('/sign-up', async (request, response) => {
             role:'user',
             department:request.body.department,
             isAdmin: false,
-            isModerator: false,
+            isUser: true,
             pin:securepin
         })
         signedUpUser.save()
@@ -74,7 +74,7 @@ userController.post('/sign-up-admin', async (request, response) => {
             role:'admin',
             department:request.body.department,
             isAdmin: true,
-            isModerator: false,
+            isUser: false,
             pin:securepin
         })
         signedUpUser.save()

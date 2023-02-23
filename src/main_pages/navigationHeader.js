@@ -44,7 +44,7 @@ render () {
       <nav className="navbar navbar-expand-lg shadow" style={{ backgroundColor: 'white' }}>
         <div className="container">
         {loggedIn? (
-                <>
+        <>
           <NavLink className="navbar-brand fs-3 fw-bold" to="/Dashboard" exact>
           <span style={{ color: '#f77c1b' }}>P</span><span style={{ color: '#1b68b3' }}>hish</span><span style={{ color: '#f77c1b' }}>S</span><span style={{ color: '#1b68b3' }}>hield</span>
           </NavLink>

@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes, Switch } from "react-router-dom";
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import './CSS/App.css';
 
 import Home from "./HomePage.js"
@@ -17,43 +17,94 @@ import ListUsers from "../soc_pages/Users.js"
 import EditUsers from "../soc_pages/editUsers.js";
 import ExamPortal from "../soc_pages/ExamPortal.js";
 
-
 import CurrentTraining from "../employee_pages/currentTraining.js"
 import EnrolledDetail from "../employee_pages/enrollDetail.js"
 import ExamContent from "../employee_pages/Exam.js";
 
 import GameCourse from "../soc_pages/UnityGame";
 
-const App = () => {
+
+export default class App extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      userData: "",
+    };
+  }  
+  
+  componentDidMount() {
+    fetch("http://localhost:4000/app/Dashboard", {
+        method: "POST",
+        crossDomain: true,
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "Access-Control-Allow-Origin": "*",
+        }, 
+        body: JSON.stringify ({
+            token: window.localStorage.getItem("token"),
+            
+        }),
+    })
+    
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data, "userData");
+        this.setState({ userData: data.data})
+    });
+   }
+
+
+
+
+  render() {
+    
+    const {userData} = this.state;
+    const loggedIn = window.localStorage.getItem("isLoggedIn");
   return (
     <div>
-        <Router>
+        <Router> {/*Creating protected routing through the use of if statements, however this is not eniterly effective as signin user can still access login and sign up */}
           <HeaderNavigation/>
         <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/log-in" element={<Login/>} />
-          <Route path="/sign-up" element={<UserSignup/>} />
-          <Route path="/sign-up-admin" element={<AdminSignup/>} />
-          <Route path="/Examination-Portal" element={<ExamPortal/>}></Route>
-
-          <Route path="/Dashboard" element={<MainDashboard/>} />
-          <Route path="/Training" element={<Training/>}></Route>
+          
+        {userData.isAdmin &&  (
+              <>
+{/*Admin pages*/}
+          <Route path="/Dashboard" element={<MainDashboard/>}/>
+          <Route path="/Training" element={<Training/>}/>
           <Route path="/add-course" element={<CreateCourse/>}/>
           <Route path="/course/:id" element={<CourseDetail/>}/>
           <Route path="/update-createdcourse/:id" element={<CourseEdit/>}/>
-          <Route path="/Users" element={<ListUsers/>} />
-          <Route path="/edits/:id" element={<EditUsers/>}/>
+          <Route path="/Users" element={<ListUsers/>}/>
+          <Route path="/edits/:id" element={<EditUsers/>} />
+          <Route path="/Examination-Portal" element={<ExamPortal/>}/>
+          </>  
+        )}
 
-
+        {userData.isUser && (
+        <>
+{/*user pages */}
+          <Route path="/Dashboard" element={<MainDashboard/>}/>
           <Route path="/Current-Training" element={<CurrentTraining/>}/>
           <Route path="/mycourse/:id" element={<EnrolledDetail/>}/>
-          <Route path="/Examination" element={<ExamContent/>}></Route>
+          <Route path="/Examination" element={<ExamContent/>}/>
+          <Route path="/Phishing-Adventure" element={<GameCourse/>}/> {/*remove later possibly*/}
+          </>
+         )}
 
-          <Route path="/Phishing-Adventure" element={<GameCourse/>}></Route>
+        {!loggedIn && (
+        <>
+{/*main pages*/}
+          <Route path="/" element={<Home/>} />
+          <Route path="/log-in" element={<Login/>} />
+          <Route path="/sign-up" element={<UserSignup/>} />
+          <Route path="/sign-up-admin" element={<AdminSignup/>}/>
+           </>
+         )}
           </Routes>
       </Router> 
     </div>
   );
 }
-
-export default App;
+}

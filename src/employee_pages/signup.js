@@ -14,7 +14,7 @@ class signup extends Component {
       department:'',
       role:'',
       isAdmin: false,
-      isModerator: false,
+      isUser: true,
       pin: ''
     }
     this.changeUsername = this.changeUsername.bind(this)
@@ -82,7 +82,7 @@ class signup extends Component {
         role:'user',
         department:this.state.department,
         isAdmin: false,
-        isModerator: false,
+        isUser: true,
         pin:this.state.pin
     }
 
@@ -98,7 +98,7 @@ class signup extends Component {
             department:'',
             role:'',
             isAdmin: false,
-            isModerator: false,
+            isUser: true,
             pin: '',
         })
   }
