@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import "bootstrap/dist/css/bootstrap.min.css"
+import "../main_pages/CSS/signForm.css"
 import DashboardNav from "../main_pages/DashboardNav.js";
 import withRouter from "./withRouter.js";
 
@@ -93,7 +93,7 @@ class courseEdit extends Component {
         <div class="info">
        
         <div>
-          <div class="containerForm">
+          <div class="Formcontainer">
             <form onSubmit={this.onSubmit} >
             <p>edit this later</p>
               <br></br>

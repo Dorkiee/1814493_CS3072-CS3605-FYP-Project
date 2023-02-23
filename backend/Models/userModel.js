@@ -38,12 +38,12 @@ const userModel = mongoose.Schema(
     role:{
       type: String,
       required: true,
-      default:"moderator"
+      default:"Admin"
     },
     department:{
       type:String,
       required:true,
-      default: "Finance"
+      default: "IT"
     },
     isAdmin: {
       type: Boolean,

@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import "bootstrap/dist/css/bootstrap.min.css"
+import "../main_pages/CSS/signForm.css"
 
 class adminSignup extends Component {
   constructor () {
     super ()
     this.state = {
-      email: '',
+      username: '',
       firstName: '',
       lastName:'',
       companyName:'',
       role:'',
-      department:'',
+      age:'',
       isAdmin: false,
-      isModerator: false,
-      password: ''
+      isUser: false,
+      pin: ''
     }
-    this.changeEmail = this.changeEmail.bind(this)
+    this.changeusername = this.changeusername.bind(this)
     this.changeFirstName = this.changeFirstName.bind(this)
     this.changeLastName = this.changeLastName.bind(this)
     this.changeCompanyName = this.changeCompanyName.bind(this)
-    this.changePassword = this.changePassword.bind(this)
-    this.changeDepartment = this.changeDepartment.bind(this)
+    this.changepin = this.changepin.bind(this)
+    this.changeage = this.changeage.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
   }
 
-  changeEmail(event) {
+  changeusername(event) {
     this.setState({
-      email:event.target.value
+      username:event.target.value
     })
   }
 
@@ -49,15 +49,15 @@ class adminSignup extends Component {
     })
   } 
 
-  changePassword(event) {
+  changepin(event) {
     this.setState({
-      password:event.target.value
+      pin:event.target.value
     })
   }
 
-  changeDepartment(event) {
+  changeage(event) {
     this.setState({
-      department:event.target.value
+      age:event.target.value
     })
   }
 
@@ -66,15 +66,15 @@ class adminSignup extends Component {
   
     const registeredA = {
         registered_by: 'moderator',
-        email:this.state.email,
+        username:this.state.username,
         firstName: this.state.firstName,
         lastName:this.state.lastName,
         companyName:this.state.companyName,
         role:'admin',
-        department:this.state.department,
+        age:this.state.age,
         isAdmin: true,
-        isModerator: false,
-        password:this.state.password
+        isUser: false,
+        pin:this.state.pin
     }
 
     axios.post('http://localhost:4000/app/sign-up-admin', registeredA)
@@ -82,17 +82,28 @@ class adminSignup extends Component {
 
         this.setState({
             registered_by: '',
-            email: '',
+            username: '',
             firstName:'',
             lastName:'',
             companyName: '',
             role:'',
-            department:'',
+            age:'',
             isAdmin: false,
-            isModerator: false,
-            password: '',
+            isUser: false,
+            pin: '',
         })
   }
+
+  validationPin = event => { //testing validation, pin must be higher than 4 but less than 6 for format to be submitted 
+    const pin = event.target.value;
+    const isValid = /^[0-9]{8,10}$/.test(pin);
+
+    if (isValid) {
+      this.setState({ errorMessage: '' });
+    } else {
+      this.setState({ errorMessage: 'incorrect format 8-10 digits, please try again' });
+    }
+  };
 
   render () {
     return (
@@ -102,13 +113,14 @@ class adminSignup extends Component {
           <h3 className='text-wrapper'>Sign Up Today</h3>
           <br></br>
           <div className='mb-3'>
-              <label>Email Address</label>
+              <label>Username</label>
               <input className="form-control" 
-              type="email" 
-              id="email" 
-              placeholder="Email *"
-              onChange={this.changeEmail}
-              value={this.state.email}
+              type="username" 
+              id="username" 
+              placeholder="username *"
+              onChange={this.changeusername}
+              value={this.state.username}
+              required
               />
           </div>
           <div className="mb-3">
@@ -119,6 +131,7 @@ class adminSignup extends Component {
                placeholder="First Name *"
                onChange={this.changeFirstName}
               value={this.state.firstName}
+              required
                />
           </div>
           <div className="mb-3">
@@ -129,48 +142,58 @@ class adminSignup extends Component {
               placeholder="Last Name *"
               onChange={this.changeLastName}
               value={this.state.lastName}
+              required
               />
           </div>
 
-          <div className="mb-3"> {/* have two sign up pages -- have a drop down to select registed company -- if company not listed, send request to IT department for them to sign up?*/}
-            <label>Company Name</label>
-              <input  type="text" 
+          <div className="mb-3"> {/* have two sign up pages -- have a drop down to select registed company -- if company not listed, send request to IT age for them to sign up?*/}
+            <label>Role</label>
+            <br></br>
+            <select   type="role" 
               id="companyName" 
-              className="form-control" 
+              className="dropdown-select" 
               placeholder="Company Name *"
               onChange={this.changeCompanyName}
               value={this.state.companyName}
-              />
+              required
+              >
+                <option value="">Please select an option *</option>
+                <option value="Soc Analyst">Soc Analyst</option>
+               </select> 
+          </div>
+          <div className="mb-3"> {/* have two sign up pages -- have a drop down to select registed company -- if company not listed, send request to IT age for them to sign up?*/}
+            <label>Age</label>
+            <br></br>
+            <select 
+            className="dropdown-select" 
+              type="age" 
+              id="age" 
+              placeholder="Select your age *"
+              onChange={this.changeage}
+              value={this.state.age}
+              required
+              >
+                <option value="">Please select an option *</option>
+                <option value="18 to 24">18 to 24</option>
+                <option value="25 to 34">25 to 34</option>
+                <option value="35 to 44">35 to 44</option>
+                <option value="45 to 54">45 to 54</option>
+                <option value="55 to 64">55 to 64</option>
+                <option value="65 or over">65 or over</option>
+                </select>
           </div>
 
           <div className="mb-3">
-            <label>Password</label>
-              <input className="form-control" 
-              type="password"  
-              id="password" 
-              placeholder="Password *"
-              onChange={this.changePassword}
-              value={this.state.password}
-              />
-          </div>
-          <div className="mb-3"> {/* have two sign up pages -- have a drop down to select registed company -- if company not listed, send request to IT department for them to sign up?*/}
-            <label>Department</label>
-              <input  type="text" 
-              id="department" 
-              className="form-control" 
-              placeholder="Drop down box here"
-              onChange={this.changeDepartment}
-              value={this.state.department}
-              />
-          </div>
-
-          <div className="mb-3">
-            <label>Confirm Password</label>
-              <input className="form-control" 
-              type="password" 
-              id="confirmPassword" 
-              placeholder="Confirm Password *"
-              
+            <label>pin</label>
+            <input className="form-control" 
+              type="pin"  
+              id="pin" 
+              placeholder="pin *"
+              pattern="[0-9]{8,10}"
+              onChange={this.changepin}
+              value={this.state.pin}
+              onBlur={this.validatePin}
+              required
               />
           </div>
           <div className='d-grid'>
