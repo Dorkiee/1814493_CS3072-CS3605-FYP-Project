@@ -13,15 +13,15 @@ class Login extends Component {
     super(props);
     this.state = {
       username: "",
-      pin: "",
+      password: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const { username, pin } = this.state;
-    console.log(username, pin);
+    const { username, password } = this.state;
+    console.log(username, password);
     fetch("http://localhost:4000/app/log-in", {
       method: "POST",
       crossDomain: true,
@@ -32,7 +32,7 @@ class Login extends Component {
       },
       body: JSON.stringify({
         username,
-        pin,
+        password,
       }),
     })
       .then((res) => res.json())
@@ -68,10 +68,10 @@ render () {
       <div className="mb-3">
         <label>Pin</label>
         <input
-          type="pin"
+          type="password"
           className="form-control"
-          placeholder="Enter pin"
-          onChange={(e) => this.setState({ pin: e.target.value })}
+          placeholder="Enter password"
+          onChange={(e) => this.setState({ password: e.target.value })}
         />
       </div>
       <br></br>

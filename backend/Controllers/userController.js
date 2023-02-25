@@ -16,8 +16,8 @@ const JWT_SECRET = "jsid7GAds09ds()oufnhjnujsgbwsa0-0SFSDFQJK9fyuoijs£!sgh3565f
 
 userController.post('/sign-up', async (request, response) => {
 
-    const saltpin = await bcrypt.genSalt(10)
-    const securepin = await bcrypt.hash(request.body.pin, saltpin)
+    const saltpassword = await bcrypt.genSalt(10)
+    const securepassword = await bcrypt.hash(request.body.password, saltpassword)
     const {username} = request.body;
 
     try {
@@ -37,7 +37,7 @@ userController.post('/sign-up', async (request, response) => {
             department:request.body.department,
             isAdmin: false,
             isUser: true,
-            pin:securepin
+            password:securepassword
         })
         signedUpUser.save()
         .then(data =>{
@@ -54,8 +54,8 @@ userController.post('/sign-up', async (request, response) => {
 
 userController.post('/sign-up-admin', async (request, response) => {
 
-    const saltpin = await bcrypt.genSalt(10)
-    const securepin = await bcrypt.hash(request.body.pin, saltpin)
+    const saltpassword = await bcrypt.genSalt(10)
+    const securepassword = await bcrypt.hash(request.body.password, saltpassword)
     const {username} = request.body;
 
     try {
@@ -75,7 +75,7 @@ userController.post('/sign-up-admin', async (request, response) => {
             department:request.body.department,
             isAdmin: true,
             isUser: false,
-            pin:securepin
+            password:securepassword
         })
         signedUpUser.save()
         .then(data =>{
@@ -115,14 +115,14 @@ userController.post('/examinationResults', async (request, response) => {
 
 userController.post('/log-in', async (request, response) => {
 
-    const {username, pin} = request.body;
+    const {username, password} = request.body;
     const user = await User.findOne({ username });
 
     if (!user) {
         return response.json({ error: "User Not Found" });
     }
 
-    if(await bcrypt.compare(pin, user.pin)) {
+    if(await bcrypt.compare(password, user.password)) {
         const token = jwt.sign({username: user.username}, JWT_SECRET);
 
         if(response.status(201)) {
@@ -132,7 +132,7 @@ userController.post('/log-in', async (request, response) => {
         }
     }
 
-    response.json({status:"error", error: "Invaild pin"})
+    response.json({status:"error", error: "Invaild password"})
 })
 
 

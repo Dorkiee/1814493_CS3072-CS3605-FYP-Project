@@ -14,13 +14,13 @@ class adminSignup extends Component {
       age:'',
       isAdmin: false,
       isUser: false,
-      pin: ''
+      password: ''
     }
     this.changeusername = this.changeusername.bind(this)
     this.changeFirstName = this.changeFirstName.bind(this)
     this.changeLastName = this.changeLastName.bind(this)
     this.changeCompanyName = this.changeCompanyName.bind(this)
-    this.changepin = this.changepin.bind(this)
+    this.changepassword = this.changepassword.bind(this)
     this.changeage = this.changeage.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
   }
@@ -49,9 +49,9 @@ class adminSignup extends Component {
     })
   } 
 
-  changepin(event) {
+  changepassword(event) {
     this.setState({
-      pin:event.target.value
+      password:event.target.value
     })
   }
 
@@ -74,7 +74,7 @@ class adminSignup extends Component {
         age:this.state.age,
         isAdmin: true,
         isUser: false,
-        pin:this.state.pin
+        password:this.state.password
     }
 
     axios.post('http://localhost:4000/app/sign-up-admin', registeredA)
@@ -90,13 +90,13 @@ class adminSignup extends Component {
             age:'',
             isAdmin: false,
             isUser: false,
-            pin: '',
+            password: '',
         })
   }
 
-  validationPin = event => { //testing validation, pin must be higher than 4 but less than 6 for format to be submitted 
-    const pin = event.target.value;
-    const isValid = /^[0-9]{8,10}$/.test(pin);
+  validationpassword = event => { //testing validation, password must be higher than 4 but less than 6 for format to be submitted 
+    const password = event.target.value;
+    const isValid = /^[0-9]{8,10}$/.test(password);
 
     if (isValid) {
       this.setState({ errorMessage: '' });
@@ -184,15 +184,15 @@ class adminSignup extends Component {
           </div>
 
           <div className="mb-3">
-            <label>pin</label>
+            <label>Pin</label>
             <input className="form-control" 
-              type="pin"  
-              id="pin" 
-              placeholder="pin *"
+              type="password"  
+              id="password" 
+              placeholder="password *"
               pattern="[0-9]{8,10}"
-              onChange={this.changepin}
-              value={this.state.pin}
-              onBlur={this.validatePin}
+              onChange={this.changepassword}
+              value={this.state.password}
+              onBlur={this.validatepassword}
               required
               />
           </div>

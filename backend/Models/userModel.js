@@ -18,7 +18,7 @@ const userModel = mongoose.Schema(
       type:String,
       required:true
     },
-    pin:{
+    password:{
       type:String,
       required:true
     },

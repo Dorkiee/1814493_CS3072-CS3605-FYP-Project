@@ -5,15 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import DashboardNav from "../main_pages/DashboardNav.js";
 import enrollRouter from "./enrollRouters.js";
 import editUsers from "../soc_pages/editUsers.js";
-import Unity, { UnityContext } from "react-unity-webgl";
-
-
-const unityContext = new UnityContext({
-  loaderUrl: "build/UnityBuiltGames.loader.js",
-  dataUrl: "build/UnityBuiltGames.data",
-  frameworkUrl: "build/UnityBuiltGames.framework.js",
-  codeUrl: "build/UnityBuiltGames.wasm",
-});
+import { Link } from 'react-router-dom';
 
 class enrollDetail extends Component {
   
@@ -80,9 +72,6 @@ class enrollDetail extends Component {
   }
 
   render() {
-      // checking if the video link is given
-      
-      
     return (
     <div>
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
@@ -101,17 +90,17 @@ class enrollDetail extends Component {
       <br></br>
       <div style={{ whiteSpace: "pre-wrap" }}>{this.state.curriculumContent}</div>
       <br></br>
+      {this.state.curriculumGame ? (
+        /*picture of game and explanation here */
+       <Link className="view-link" to={"/Phishing-Adventure"}>
+          Play Game
+        </Link>
+      ) : (
+        <p>This course has no game content.</p>
+      )}
       <br></br>
-
-    <Unity unityContext={unityContext} 
-          style={{
-            height: 700,
-            width: 1010,
-            border: "2px solid black",
-            background: "grey",
-          }}
-    />
-
+      <br></br>
+      {/* possibly have the complete button locked until user has played the game */}
       <div><button onClick={() => editUsers.current.onCompleteTask()}>Complete Course</button></div>
     </div>
     </div>
