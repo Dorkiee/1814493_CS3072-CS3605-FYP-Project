@@ -42,34 +42,78 @@ export default class DashboardNav extends Component {
       console.log(isAdmin, "role");
         return (
           <div>
-          <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
-          <div class="wrapper">
-          <div class="sidebar">
-          <h2>{this.state.userData.companyName}</h2>
-          {isAdmin? (
+
+          <div className="container"> 
+          <aside>
+            <div className="top">
+              <div className="logo">
+                <h2>{this.state.userData.companyName}</h2>
+              </div>
+            
+              <div className="close">
+              <span class="material-symbols-outlined">
+                close
+              </span>
+              </div>
+            </div>
+
+            {isAdmin? (
           <>
-          <ul> {/* have a boolean to check if this isAdmin */}
-          <li><NavLink to="/Dashboard" exact title="Dashboard"><i></i>Dashboard</NavLink></li>
-          <li><NavLink to="/Users" exact title="Users"><i></i>Users</NavLink></li>
-          <li><NavLink to="/Training" exact title="Training"><i></i>Training</NavLink></li>
-          <li><NavLink to="/Examination-Portal" exact title="Examination"><i></i>Examination</NavLink></li>
-          <li><a href="/" onClick={this.signOut}>Sign out</a></li>
-          </ul> 
+          <div className="sidebar">
+          <a href="/Dashboard" className="active">
+            <span class="material-symbols-outlined">home</span>
+            <h6>Dashboard</h6>
+            </a>
+
+            <a href="/Users">
+            <span class="material-symbols-outlined">school</span>
+            <h6>Users</h6>
+            </a>
+
+            <a href="/Training">
+            <span class="material-symbols-outlined">quiz</span>
+            <h6>Training</h6>
+            </a>
+
+            <a href="/Examination-Portal">
+            <span class="material-symbols-outlined">quiz</span>
+            <h6>Examination</h6>
+            </a>
+
+            <a href="/" onClick={this.signOut}>
+            <span class="material-symbols-outlined">logout</span>
+            <h6>Sign out</h6>
+            </a>
+          </div>
           </>
           ) : (
           <>
-           <ul>
-            <li><NavLink to="/Dashboard" exact title="EDashboard"><i></i>Dashboard</NavLink></li>
-            <li><NavLink to="/Current-Training" exact title="Training"><i></i>Current Training</NavLink></li>
-            <li><NavLink to="/Examination" exact title="Exam"><i></i>Examination</NavLink></li>
-            <li><a href="/" onClick={this.signOut}>Sign out</a></li>
-          </ul>        
+           <div className="sidebar">
+          <a href="/Dashboard" className="active">
+            <span class="material-symbols-outlined">home</span>
+            <h6>Dashboard</h6>
+            </a>
+
+            <a href="/Current-Training">
+            <span class="material-symbols-outlined">school</span>
+            <h6>Training</h6>
+            </a>
+
+            <a href="/Examination">
+            <span class="material-symbols-outlined">quiz</span>
+            <h6>Examination</h6>
+            </a>
+
+            <a href="/" onClick={this.signOut}>
+            <span class="material-symbols-outlined">logout</span>
+            <h6>Sign out</h6>
+            </a>
+          </div>
           </>
-          ) } 
-            </div>
-              </div>
-              </nav>
-            </div>
+          ) }
+          </aside>
+          </div>
+          </div>
         );
     }
 }

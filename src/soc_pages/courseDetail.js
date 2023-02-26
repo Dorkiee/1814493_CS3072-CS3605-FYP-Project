@@ -146,11 +146,12 @@ class courseDetail extends Component {
     const isVideo = videoLink.includes("youtube.com");
     return (
     <div>
-    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
+    <nav>
     <div class="wrapper">
     <DashboardNav/>
     <div class="main_content">
     <div class="info">
+    <div className="text_content">
       <div><button type='setup' className='btn btn-primary' value='a'>
       <Link style={{color: 'white', textDecoration: 'none'}} className="edit-link" to={"/update-createdcourse/" + this.props.params.id}>
         Edit Course
@@ -199,6 +200,7 @@ class courseDetail extends Component {
       <div><h2>Lecture 3</h2></div>
       <div>HERE IS WHERE THE SECTIONS WILL BE, E.G. SECTION 3 (YOU MAY ADD IMAGES)</div>
     */}
+    </div>
         </div>
         </div>
         </div>

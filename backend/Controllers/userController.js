@@ -91,27 +91,6 @@ userController.post('/sign-up-admin', async (request, response) => {
 })
 
 
-userController.post('/examinationResults', async (request, response) => {
-
-    try {
-
-        const examination = new userModel({
-            score:request.body.score,
-            firstName:request.body.firstName,
-            lastName:request.body.lastName,
-        })
-        examination.save()
-        .then(data =>{
-            response.json(data)
-        })
-        .catch (error =>{
-            response.json(error)
-        })
-
-    } catch (error) {
-        response.send({ status: "error" });
-      }
-})
 
 userController.post('/log-in', async (request, response) => {
 

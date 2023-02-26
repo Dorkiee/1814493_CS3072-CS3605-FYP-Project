@@ -37,7 +37,7 @@ export default class Users extends Component {
       
         return (
         <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
+        <nav >
         <div class="wrapper">
         <DashboardNav/>
           <div class="main_content">
@@ -47,13 +47,13 @@ export default class Users extends Component {
             <div>
                 <br></br>
             </div>
-            <form class="table-content">
-                <table class="table">
-                    <thead class="thead-dark">
+            <form class="usertable">
+                <table>
+                    <thead>
                         <tr>
                             <th>First Name</th>
                             <th>Last Name</th>
-                            <th>Email</th>
+                            <th>Username</th>
                             <th>Department</th>
                             <th>Access Level</th>
                             <th>Task Status</th>

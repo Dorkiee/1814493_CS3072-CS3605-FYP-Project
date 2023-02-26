@@ -61,21 +61,18 @@ export default class CurrentTraining extends Component {
       console.log(isAdmin, "role");
         return (
           <div>
-          <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
+          <nav >
           <div class="wrapper">
           <DashboardNav/>
             <div class="main_content">
               <div class="info">
+                <div className="text_content">
               Here is list of training that needs to be complete:
                <br></br>
                <br></br>
-               <form>
-                <table>
-                    <tbody>
+               
                         {this.DataTable()}
-                    </tbody>
-                </table>
-            </form>
+              </div>
               </div>
               </div>
               </div>

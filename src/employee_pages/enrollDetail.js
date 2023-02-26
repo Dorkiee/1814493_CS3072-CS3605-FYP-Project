@@ -74,11 +74,12 @@ class enrollDetail extends Component {
   render() {
     return (
     <div>
-    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
+    <nav >
     <div class="wrapper">
     <DashboardNav/>
     <div class="main_content">
     <div class="info">
+    <div className="text_content">
       <div><h1>{this.state.courseName} Course</h1></div>
       <div><h3>{this.state.courseOutline}</h3></div> 
       {this.state.curriculumVids && this.state.curriculumVids.includes('youtube') ? (
@@ -102,6 +103,7 @@ class enrollDetail extends Component {
       <br></br>
       {/* possibly have the complete button locked until user has played the game */}
       <div><button onClick={() => editUsers.current.onCompleteTask()}>Complete Course</button></div>
+    </div>
     </div>
     </div>
     </div>

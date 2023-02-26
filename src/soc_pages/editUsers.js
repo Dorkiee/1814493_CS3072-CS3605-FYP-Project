@@ -133,7 +133,7 @@ class editUsers extends Component {
   render() {
     return (
     <div>
-    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
+    <nav >
     <div class="wrapper">
     <DashboardNav/>
     <div class="main_content">

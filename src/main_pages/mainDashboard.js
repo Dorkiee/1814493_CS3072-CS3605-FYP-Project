@@ -43,38 +43,39 @@ export default class mainDashboard extends Component {
       const isAdmin = this.state.userData.isAdmin;
       console.log(isAdmin, "role");
       return (
-          <div>
+        <div>
+        <nav>
+        <div class="wrapper">
+        <DashboardNav/>
+        <div class="main_content">
+        <div className="info">
+        <div className="text_content">
+              <h1>{this.state.userData.username}</h1>
+        </div>
+        </div>
+        </div>
+        </div>
+        </nav>
+        
+        
+        {/* 
+        
         <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
         <div class="wrapper">
           <DashboardNav/>
           <div class="main_content">
-            {/*<div class="header">Welcome!! user name here</div>*/}
             <div class="info">
             <h1>{this.state.userData.firstName} {this.state.userData.lastName}</h1>
             <h1>{this.state.userData.email}</h1>
-            <p>content</p>
-            <p>content</p>
-            <p>content</p>
-            <p>content</p>
-            <p>content</p>
-            <p>content</p>
-            <p>content</p>
-            <p>content</p>
-            <p>content</p>
-            <p>content</p>
-            <p>content</p>
-            <p>content</p>
-            <p>content</p>
-            <p>content</p>
-            <p>content</p>
-            <p>content</p>
-            <p>content</p>
-            <p>content</p>
-            <p>content</p>
+         
             </div>
             </div>
             </div>
             </nav>
+        
+        */}
+        
+            
           </div>
         );
     }

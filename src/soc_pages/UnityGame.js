@@ -12,11 +12,12 @@ const unityContext = new UnityContext({
 function UnityGame() {
     return (
     <div>    
-      <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
+      <nav>
         <div class="wrapper">
           <DashboardNav/>
           <div class="main_content">
             <div class="info">
+            <div className="text_content">
               <div><h1>Phishing Adventure</h1></div>
             <Unity unityContext={unityContext } 
               style={{
@@ -29,6 +30,7 @@ function UnityGame() {
               <br></br>
               <button> Go back to complete the course</button>
             </div>
+          </div>
           </div>
         </div>
       </nav>
