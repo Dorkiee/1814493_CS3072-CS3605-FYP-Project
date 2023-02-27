@@ -16,8 +16,19 @@ const examModel = new mongoose.Schema(
      
       score: {
         type: Number,
+        required: true,
         default: 0,
       },
+
+      examID: {
+        type: String,
+        required: true,
+      },
+
+      passed: {
+        type: Boolean,
+        required: true,
+      }
      
     },
     {

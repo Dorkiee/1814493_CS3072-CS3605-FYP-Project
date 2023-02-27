@@ -14,6 +14,8 @@ class Exam extends Component {
       firstName: '',
       lastName: '',
       username: '',
+      examID: '',
+      passed: false,
       currentIndex: 0,
       score: 0,
       showAnswer: false,
@@ -51,6 +53,7 @@ changeScore(event) {
     changeScore:event.target.value
   })
 }
+
 
 
   examData = [
@@ -93,12 +96,11 @@ changeScore(event) {
   handleFinishExam = (event) => {
     event.preventDefault();
 
-
-
     const submitResults = {
       firstName: this.state.userData.firstName,
       lastName:this.state.userData.lastName,
-      username:this.state.userData.username,
+      examID: this.state.userData.username,
+      passed: this.state.score >= 2,
       score:this.state.score,
   }
 
@@ -108,9 +110,14 @@ changeScore(event) {
       this.setState({
           firstName:'',
           lastName: '',
-          username: '',
+          examID: '',
+          passed: false,
           score:'',
       })
+      
+
+
+        
   }
 
   render() {
@@ -123,6 +130,7 @@ changeScore(event) {
       let result;
       if (score >= threshold) {
         result = 'pass';
+        
       } else {
         result = 'fail';
       }
@@ -164,6 +172,7 @@ changeScore(event) {
                 <div className="text_content">
                   <div className="mx-auto" style={{ width: '500px' }}>
                     <form>
+                      
                       <h2 className="alignC">{currentQuestion.question}</h2>
                       <br />
                       {currentQuestion.image && (

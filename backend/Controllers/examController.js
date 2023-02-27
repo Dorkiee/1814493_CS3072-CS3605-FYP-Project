@@ -11,18 +11,23 @@ const Exam = mongoose.model("exam");
 const User = mongoose.model("users");
 
 examController.post('/examinationResults', async (request, response) => {
+    const {examID} = request.body;
+
     try {
 
-        const usertakenexam = await examModel.findOne({ examID: request.params.id });
+
+        const examR = await Exam.findOne({ examID });
     
-        if (usertakenexam) {
-          return response.json({ error: "User has already taken the exam" });
+        if (examR) {
+          return response.json({ error: "User taken exam" });
         }
+
 
 
         const examination = new examModel({
             score:request.body.score,
-            examID: request.params.id,
+            examID: request.body.examID,
+            passed: request.body.passed,
             firstName:request.body.firstName,
             lastName:request.body.lastName,
         })

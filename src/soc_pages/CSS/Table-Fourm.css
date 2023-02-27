@@ -55,3 +55,44 @@
 
 
 }
+
+
+
+
+  
+  /* style custom checkbox */
+  .checkbox-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 20px;
+  }
+  
+  .checkbox-wrapper span {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    vertical-align: middle;
+  }
+  
+  /* style checked custom checkbox */
+  .checkbox-wrapper input[type="checkbox"]:checked + span::before {
+    content: '\2714';
+    font-size: 12px;
+    line-height: 16px;
+    color: #fff;
+    text-align: center;
+    display: block;
+    background-color: #007bff;
+   
+  }
+  
+  .checkbox-wrapper input[type="checkbox"]:checked + span {
+    border: 1px solid #007bff;
+    background-color: #007bff;
+  }

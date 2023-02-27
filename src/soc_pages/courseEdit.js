@@ -91,11 +91,10 @@ class courseEdit extends Component {
         <DashboardNav/>
         <div class="main_content">
         <div class="info">
-       
+        <div className="text_content">
         <div>
-          <div class="Formcontainer">
+          <div className="mx-auto" style={{ width: '900px' }}>
             <form onSubmit={this.onSubmit} >
-            <p>edit this later</p>
               <br></br>
               <div className='mb-3'>
                   <label>Update Course Name</label> 
@@ -147,7 +146,7 @@ class courseEdit extends Component {
               </div>
     
           </div>
-
+          </div>
         </div>
         </div>
         </div>

@@ -138,7 +138,9 @@ class editUsers extends Component {
     <DashboardNav/>
     <div class="main_content">
     <div class="info">
-      <div class="containerForm">
+    <div className="text_content">
+      <div className="mx-auto" style={{ width: '900px' }}>
+       
         <form onSubmit={this.onSubmit} >
           <div className='mb-3'>
               <label>Update Email Address</label>
@@ -203,7 +205,7 @@ class editUsers extends Component {
           </div>
           </form>
           </div>
-
+          </div>
         </div>
         </div>
         </div>

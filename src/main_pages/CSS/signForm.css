@@ -79,3 +79,23 @@
   footer p {
     margin: 0;
   }
+
+
+  @media screen and (max-width: 983px){
+    .containerForm {
+    width: 60%;
+    height: 70%;
+    }
+
+    .dropdown-select{
+      width: 60%;
+    }
+
+    .footer {
+      display: none;
+    }
+
+    .footerLogin {
+      display: none;
+    }
+  }

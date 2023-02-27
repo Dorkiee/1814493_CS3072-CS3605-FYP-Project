@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import "bootstrap/dist/css/bootstrap.min.css"
 import DashboardNav from '../main_pages/DashboardNav.js';
-
+import "./CSS/Table-Fourm.css"
 class createCourse extends Component {
     constructor () {
         super ()
@@ -90,10 +90,10 @@ class createCourse extends Component {
         <DashboardNav/>
         <div class="main_content">
               <div class="info">
+              <div className="text_content">
                 <div>
                   <div className="mx-auto" style={{ width: '900px' }}>
-                    <form className="form-container p-5 mx-auto" onSubmit={this.onSubmit}>
-                      <p>edit this later</p>
+                    <form onSubmit={this.onSubmit}>
                       <br></br>
                       <div className="mb-3">
                         <label>Course Name</label>
@@ -139,15 +139,19 @@ class createCourse extends Component {
                   />
               </div>
 
-              <div> {/* have two sign up pages -- have a drop down to select registed company -- if company not listed, send request to IT department for them to sign up?*/}
+              <div className="mb-3"> 
                 <label>Assign Game</label>
+                <label className="checkbox-wrapper">
                   <input  
-                  type="checkbox" 
-                  id="CurriculumGame" 
-                  className="game content"
-                  checked={this.state.curriculumGame}
-                  onChange={this.changecurriculumGame}
+                    type="checkbox" 
+                    id="CurriculumGame" 
+                    className="game content"
+                    checked={this.state.curriculumGame}
+                    onChange={this.changecurriculumGame}
                   />
+                  <span></span>
+                     Check this box to assign the game
+                </label>
               </div>
 
               <div className='d-grid'>
@@ -159,7 +163,7 @@ class createCourse extends Component {
               </div>
     
           </div>
-
+          </div>
         </div>
         </div>
         </div>
