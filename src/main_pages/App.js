@@ -15,6 +15,7 @@ import CourseDetail from "../soc_pages/courseDetail.js"
 import CourseEdit from "../soc_pages/courseEdit.js"
 import ListUsers from "../soc_pages/Users.js"
 import EditUsers from "../soc_pages/editUsers.js";
+import TaskStatus from "../soc_pages/TaskStatus.js"
 import ExamPortal from "../soc_pages/ExamPortal.js";
 
 import CurrentTraining from "../employee_pages/currentTraining.js"
@@ -23,6 +24,7 @@ import ExamContent from "../employee_pages/Exam.js";
 
 import GameCourse from "../soc_pages/UnityGame";
 
+import UsersCount from "../soc_pages/UsersCount";
 
 export default class App extends Component {
   
@@ -79,6 +81,7 @@ export default class App extends Component {
           <Route path="/Users" element={<ListUsers/>}/>
           <Route path="/edits/:id" element={<EditUsers/>} />
           <Route path="/Examination-Portal" element={<ExamPortal/>}/>
+          <Route path="/taskcount" element={<UsersCount/>}/>
           </>  
         )}
 

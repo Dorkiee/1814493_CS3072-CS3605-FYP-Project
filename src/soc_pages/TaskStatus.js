@@ -1,7 +1,6 @@
 import axios, { Axios } from "axios";
 import React, {Component, useState, useEffect} from "react";
-import EmpTable from './empTable.js'
-import TaskStatus from './TaskStatus.js'
+import TaskTable from './taskTable.js'
 import { NavLink } from "react-router-dom";
 import DashboardNav from "../main_pages/DashboardNav.js";
 import "../soc_pages/CSS/Table-Fourm.css";
@@ -12,24 +11,34 @@ export default class Users extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userData: [],
+      courseData: [],
+      userData: {},
     };
   }  
   
   componentDidMount() {
-    axios.get("http://localhost:4000/app/log-in")
+    axios.get("http://localhost:4000/app/mycourses")
     .then(res => {
-      console.log(res, "userData");
-      this.setState({ userData: res.data})   
+      console.log(res, "courseData");
+      this.setState({ courseData: res.data})   
     })
     .catch(error => {
       
       });
+
+      axios.get("http://localhost:4000/app/log-in")
+      .then(res => {
+        console.log(res, "userData");
+        this.setState({ userData: res.data})   
+      })
+      .catch(error => {
+        
+        });
     }
 
     DataTable () {
-      return this.state.userData.map ((res, i) => {
-        return <EmpTable obj={res} key={i}/>
+      return this.state.courseData.map ((res, i) => {
+        return <TaskTable obj={res} key={i} userData={this.state.userData} />
       });
     }
   
@@ -39,8 +48,7 @@ export default class Users extends Component {
         return (
         <div>
         <nav >
-        <div class="wrapper">
-        <DashboardNav/>
+        <div>
           <div class="main_content">
             {/*<div class="header">Welcome!! user name here</div>*/}
             <div class="info">
@@ -48,17 +56,12 @@ export default class Users extends Component {
             <div>
                 <br></br>
             </div>
-            <div>
             <form class="usertable">
                 <table>
                     <thead>
                         <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
-                            <th>Department</th>
-                            <th>Access Level</th>
-                            <th>Settings</th>
+                            <th>Course Name</th>
+                            <th>Users who have completed the course</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,10 +69,6 @@ export default class Users extends Component {
                     </tbody>
                 </table>
             </form>
-            </div>
-            <div>
-              {<TaskStatus/>}
-            </div>
             </div>
             </div>
             </div>

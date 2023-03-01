@@ -150,6 +150,12 @@ userController.get("/edits/:id", async (request, response, next) => {
     .catch(error =>response.status(404).json({error: 'no empolyee'}))
 });
 
+userController.get("/view/:id", async (request, response, next) => {
+    User.findById(request.params.id)
+    .then(user => response.json(user))
+    .catch(error =>response.status(404).json({error: 'no task completed'}))
+});
+
 userController.put("/update/:id", async (request, response, next) => {
         User.findByIdAndUpdate(request.params.id, request.body)
         .then(user => response.json({ msg: 'Updated successfully' }))

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import "bootstrap/dist/css/bootstrap.min.css"
 import DashboardNav from "../main_pages/DashboardNav.js";
 import withRouter from "./withRouter.js";
 import { Link } from 'react-router-dom';
@@ -27,7 +26,6 @@ class editUsers extends Component {
     this.onChangeDepartment = this.onChangeDepartment.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
     this.onDeleteUser = this.onDeleteUser.bind(this);
-    this.onCompleteTask = this.onCompleteTask.bind(this)
 
   }
 
@@ -106,27 +104,6 @@ class editUsers extends Component {
 
     event.preventDefault();
 
-  }
-
-
-  onCompleteTask(event) {
-    event.preventDefault()
-    const editCourseObject = {
-      completedContent: true,
-      taskStatus: this.state.taskStatus + 1,
-    };
-    axios.put('http://localhost:4000/app/update/' + this.props.params.id, editCourseObject)
-      .then((res) => {
-        this.setState(updateState => ({
-            complete: true,
-            taskStatus: updateState.taskStatus + 1
-          }));
-
-        console.log(res.data)
-        console.log('course completed')
-      }).catch((error) => {
-        console.log(error)
-      })
   }
 
 

@@ -14,22 +14,45 @@ class enrollDetail extends Component {
   constructor(props) {
     super(props)
     this.state = {
+        userData: "",
         courseName: '',
         courseOutline: '',
         curriculumContent: '',
         curriculumVids: '',
         curriculumGame: false,
+        completedTasks:[{userName: ''}, {completed: false}],
       }
     this.onChangeCourseName = this.onChangeCourseName.bind(this);
     this.onChangecourseOutline = this.onChangecourseOutline.bind(this);
     this.onChangecurriculumContent = this.onChangecurriculumContent.bind(this);
     this.onChangecurriculumVids = this.onChangecurriculumVids.bind(this);
     this.onChangecurriculumGame = this.onChangecurriculumGame.bind(this);
-    this.taskUpdate = React.createRef();
+
   }
 
 
   componentDidMount() {
+    fetch("http://localhost:4000/app/Dashboard", { //change to get login instead i think
+      method: "POST",
+      crossDomain: true,
+      headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+      }, 
+      body: JSON.stringify ({
+          token: window.localStorage.getItem("token"),
+          
+      }),
+  })
+  
+  .then((response) => response.json())
+  .then((data) => {
+      console.log(data, "userData");
+      this.setState({ userData: data.data})
+  });
+    
+
 
     axios.get('http://localhost:4000/app/mycourse/' + this.props.params.id)
       .then(response => {
@@ -41,11 +64,15 @@ class enrollDetail extends Component {
         curriculumVids: response.data.curriculumVids,
         curriculumGame: response.data.curriculumGame, 
         });
-        console.log(response);
+        console.log(response, "courseID");
       })
       .catch((error) => {
         console.log(error);
       })
+
+
+ 
+  
   }
 
 
@@ -71,6 +98,28 @@ class enrollDetail extends Component {
     this.setState({curriculumVids: event.target.value})
   }
 
+ 
+
+  onCompleteTask = (event) => {
+    event.preventDefault();
+  
+    const taskData = {
+      userName: this.state.userData.username,
+      completed: true
+    };
+  
+    axios.post('http://localhost:4000/app/completed-course-update/' + this.props.params.id, taskData)
+      .then(response => {
+        // Update the state to include the new task object
+        this.setState(prevState => ({
+          completedTasks: [...prevState.completedTasks, taskData],
+        }));
+        console.log(response.data);
+        window.location.reload(); // Refreshing page
+      });
+  }
+  
+
   render() {
     return (
     <div>
@@ -82,6 +131,7 @@ class enrollDetail extends Component {
     <div className="text_content">
       <div><h1>{this.state.courseName} Course</h1></div>
       <div><h3>{this.state.courseOutline}</h3></div> 
+      <div>{this.state.userData.username}</div>
       {this.state.curriculumVids && this.state.curriculumVids.includes('youtube') ? (
       <iframe width="900" height="500" src={this.state.curriculumVids} frameborder="0" allowFullScreen></iframe>
       ) : (
@@ -102,7 +152,13 @@ class enrollDetail extends Component {
       <br></br>
       <br></br>
       {/* possibly have the complete button locked until user has played the game */}
-      <div><button onClick={() => editUsers.current.onCompleteTask()}>Complete Course</button></div>
+
+  
+      <div><button type='delete' className='btn btn-primary' value='delete' onClick={this.onCompleteTask}>
+        <Link style={{color: "white"}} to="/Current-Training" exact title="Current-Training">
+        Complete Course
+        </Link>
+    </button></div>
     </div>
     </div>
     </div>

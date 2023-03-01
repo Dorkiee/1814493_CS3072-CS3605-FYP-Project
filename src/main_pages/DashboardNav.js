@@ -1,16 +1,29 @@
 import React, {Component} from "react";
 import { NavLink } from "react-router-dom";
 import "../main_pages/CSS/dashboardCSS.css";
+import axios from "axios"
 
 export default class DashboardNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userData: "",
+      courseData: [],
+
     };
   }  
   
   componentDidMount() {
+
+    axios.get("http://localhost:4000/app/mycourses")
+    .then(res => {
+      console.log(res, "all couses");
+      this.setState({ courseData: res.data})   
+    })
+    .catch(error => {
+      
+    });
+
         fetch("http://localhost:4000/app/Dashboard", {
             method: "POST",
             crossDomain: true,
@@ -35,11 +48,15 @@ export default class DashboardNav extends Component {
       window.localStorage.removeItem("token");
       window.localStorage.removeItem("isLoggedIn");
       window.localStorage.href = "/";
+      
     }
 
     render () {
       const isAdmin = this.state.userData.isAdmin;
       console.log(isAdmin, "role");
+      
+       const isCourseCompleted = this.state.courseData.completedTasks;
+       console.log(isCourseCompleted, "completed");
         return (
           <div>
 
@@ -66,18 +83,13 @@ export default class DashboardNav extends Component {
             </a>
 
             <a href="/Users">
-            <span class="material-symbols-outlined">school</span>
+            <span class="material-symbols-outlined">group</span>
             <h6>Users</h6>
             </a>
 
             <a href="/Training">
             <span class="material-symbols-outlined">quiz</span>
             <h6>Training</h6>
-            </a>
-
-            <a href="/Examination-Portal">
-            <span class="material-symbols-outlined">quiz</span>
-            <h6>Examination</h6>
             </a>
 
             <a href="/" onClick={this.signOut}>
@@ -99,10 +111,16 @@ export default class DashboardNav extends Component {
             <h6>Training</h6>
             </a>
 
-            <a href="/Examination">
+            <br></br>
+            {isCourseCompleted ? (
+              <a href="/Examination">
             <span class="material-symbols-outlined">quiz</span>
             <h6>Examination</h6>
             </a>
+              ) : (
+              <p>Complete all course to access examination</p>
+            
+            )}
 
             <a href="/" onClick={this.signOut}>
             <span class="material-symbols-outlined">logout</span>

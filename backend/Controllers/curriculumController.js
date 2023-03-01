@@ -25,6 +25,8 @@ curriculumController.post('/enrolledcourse', async (request, response) => { //ad
             curriculumGame: request.body.curriculumGame,
             completedContent:request.body.completedContent, 
             taskStatus: request.body.taskStatus,
+            userName: request.body.userName,
+            completedTasks: [],
         })
         asignedCourses.save()
         .then(data =>{
@@ -60,6 +62,31 @@ curriculumController.put("/course-status/:id", async (request, response, next) =
             response.status(400).json({ error: 'Unable to update the Database' })
         );
     
+});
+
+curriculumController.post("/completed-course-update/:id", async (request, response, next) => {
+    try {
+        const completedTask = request.body; // Get the completed task data from the request body
+        const user = await Enroll.findByIdAndUpdate(request.params.id, request.body); // Find the user by ID
+
+        if (!user) {
+            return response.status(404).send({ error: "User not found" }); // Handle if user not found
+        }
+
+        user.completedTasks.push(completedTask); // Add the completed task to the user's list
+        await user.save(); // Save the updated user document
+
+        response.send(user); // Send back the updated user document
+
+
+        const userName = await Enroll.findById({completedTask})
+        if(userName) {
+            return response.json({error: "user had already completed course exists"})
+        }
+
+    } catch (error) {
+        response.status(500).send({ error: "Server error" }); // Handle server errors
+    }
 });
 
 

@@ -79,12 +79,6 @@ const userModel = mongoose.Schema(
       required: false,
     },
   
-    taskStatus : {
-      type: Number,
-      default: 0,
-      required: false,
-    }, 
-
     courseNo: {
       type: Number, 
       default: 0,

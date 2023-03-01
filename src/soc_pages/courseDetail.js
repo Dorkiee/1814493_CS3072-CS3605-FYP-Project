@@ -66,7 +66,7 @@ class courseDetail extends Component {
       }
     })
     .then((res) => {
-        console.log('Content successfully deleted!' + EnrolledDetail.isActive)
+        console.log('Content successfully deleted!')
         
     }).catch((error) => {
         console.log(error)
@@ -74,7 +74,7 @@ class courseDetail extends Component {
 
     event.preventDefault();
     // Call the handleDelete method from the EnrolledDetail component
-    this.enrolledDetail.handleDelete();
+
   }
 
   enrollCourse (event) 
@@ -98,6 +98,7 @@ class courseDetail extends Component {
                 curriculumVids: '',
                 curriculumGame: '',
             })
+            window.location.href = "/Training";
   }
 
   onChangeCourseName(event) {
@@ -138,9 +139,6 @@ class courseDetail extends Component {
   }
 
   render() {
-    window.addEventListener('message', (event) => {
-      console.log('Received message from the source window:', event.data);
-    });
    // checking if the video link is given
     const videoLink = this.state.curriculumVids;
     const isVideo = videoLink.includes("youtube.com");
@@ -166,7 +164,7 @@ class courseDetail extends Component {
       size="sm" 
       variant="danger"
       style={{ backgroundColor: "red"}}
-      ><Link to="/Training" exact title="Training">
+      ><Link style={{color: 'white', textDecoration: 'none'}} to="/Training" exact title="Training">
         Delete Course
         </Link>
       </button>

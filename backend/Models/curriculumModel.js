@@ -36,6 +36,17 @@ const curriculumModel = mongoose.Schema(
 		required: false,
 	}, 
 
+	completedTasks : [{
+		userName: {
+		type: String,
+		required: false,
+		},
+		completed: {
+			type: Boolean,
+			required: false,
+		},
+	  }], 
+
   },
   {
     timestamps: true,
