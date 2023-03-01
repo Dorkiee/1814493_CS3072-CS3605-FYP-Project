@@ -63,7 +63,7 @@ render () {
             {loggedIn? (
                 <>
                   <NavLink className="nav-link text-success" to="/Dashboard" exact title="Dashboard">
-                    <span style={{ color: '#1b68b3' }}>Hi, <strong>{this.state.userData.firstName}</strong> </span>
+                    <span style={{ color: '#1b68b3' }}>Hi, <strong>{this.state.userData.username}</strong> </span>
                   </NavLink>
                 </>
                 ) : (
@@ -89,7 +89,7 @@ render () {
               {loggedIn? (
                 <>
                   <NavLink className="nav-link text-success" to="/Dashboard" exact title="Dashboard">
-                  <span style={{ color: '#1b68b3' }}>Hi, <strong>{this.state.userData.firstName}</strong> </span>
+                  <span style={{ color: '#1b68b3' }}>Hi, <strong>{this.state.userData.username}</strong> </span>
                   </NavLink>
                 </>
                 ) : (

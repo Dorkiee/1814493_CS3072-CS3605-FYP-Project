@@ -11,8 +11,6 @@ class Exam extends Component {
     super();
     this.state = {
       userData: "",
-      firstName: '',
-      lastName: '',
       username: '',
       examID: '',
       passed: false,
@@ -97,8 +95,6 @@ changeScore(event) {
     event.preventDefault();
 
     const submitResults = {
-      firstName: this.state.userData.firstName,
-      lastName:this.state.userData.lastName,
       examID: this.state.userData.username,
       passed: this.state.score >= 2,
       score:this.state.score,
@@ -108,8 +104,6 @@ changeScore(event) {
  .then(response => console.log(response.data))
 
       this.setState({
-          firstName:'',
-          lastName: '',
           examID: '',
           passed: false,
           score:'',

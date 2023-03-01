@@ -131,11 +131,11 @@ class enrollDetail extends Component {
     <div className="text_content">
       <div><h1>{this.state.courseName} Course</h1></div>
       <div><h3>{this.state.courseOutline}</h3></div> 
-      <div>{this.state.userData.username}</div>
+      <span style={{color: "red"}}>Pressing the "Complete Course" button after finishing a course will lock it, and it won't be possible to retake the course. Please note the exam will cover most of the course material, which could influence the accuracy of my dissertation. Please ensure that you are finished with the course before clicking the button. Thank you!</span>
       {this.state.curriculumVids && this.state.curriculumVids.includes('youtube') ? (
       <iframe width="900" height="500" src={this.state.curriculumVids} frameborder="0" allowFullScreen></iframe>
       ) : (
-        <p>This course has no video content.</p>
+        <p></p>
       )}
       <br></br>
       <br></br>
@@ -147,15 +147,15 @@ class enrollDetail extends Component {
           Play Game
         </Link>
       ) : (
-        <p>This course has no game content.</p>
+        <p></p>
       )}
       <br></br>
       <br></br>
       {/* possibly have the complete button locked until user has played the game */}
 
   
-      <div><button type='delete' className='btn btn-primary' value='delete' onClick={this.onCompleteTask}>
-        <Link style={{color: "white"}} to="/Current-Training" exact title="Current-Training">
+      <div><button type='delete' className='btn btn-primary' value='delete'style={{background: "red"}}  onClick={this.onCompleteTask}>
+        <Link style={{color: "white", background: "red"}} to="/Current-Training" exact title="Current-Training">
         Complete Course
         </Link>
     </button></div>

@@ -11,7 +11,7 @@ class editUsers extends Component {
     this.state = {
         firstName: '',
         lastName: '',
-        email: '',
+        username: '',
         role: '',
         department: '',
         isAdmin: false,
@@ -21,7 +21,7 @@ class editUsers extends Component {
       }
     this.onChangeFirstName = this.onChangeFirstName.bind(this)
     this.onChangeLastName = this.onChangeLastName.bind(this)
-    this.onChangeEmail = this.onChangeEmail.bind(this)
+    this.onChangeusername = this.onChangeusername.bind(this)
     this.onChangeRole = this.onChangeRole.bind(this)
     this.onChangeDepartment = this.onChangeDepartment.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -36,7 +36,7 @@ class editUsers extends Component {
       .then(response => {
 
         this.setState({
-        email: response.data.email,
+        username: response.data.username,
         firstName: response.data.firstName,
         lastName: response.data.lastName,
         role: response.data.role, 
@@ -55,8 +55,8 @@ class editUsers extends Component {
   onChangeLastName(event) {
     this.setState({ lastName: event.target.value })
   }
-  onChangeEmail(event) {
-    this.setState({ email: event.target.value })
+  onChangeusername(event) {
+    this.setState({ username: event.target.value })
   }
   onChangeRole(event) {
     this.setState({ role: event.target.value })
@@ -73,7 +73,7 @@ class editUsers extends Component {
     const editUserObject = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
-      email: this.state.email,
+      username: this.state.username,
       role: this.state.role,
       department:this.state.department,
     };
@@ -120,13 +120,13 @@ class editUsers extends Component {
        
         <form onSubmit={this.onSubmit} >
           <div className='mb-3'>
-              <label>Update Email Address</label>
+              <label>Update username</label>
               <input className="form-control" 
-              type="email" 
-              id="email" 
-              placeholder={this.state.email}
-              onChange={this.onChangeEmail}
-              value={this.state.email}
+              type="username" 
+              id="username" 
+              placeholder={this.state.username}
+              onChange={this.onChangeusername}
+              value={this.state.username}
               />
           </div>
           <div className="mb-3">
@@ -171,14 +171,16 @@ class editUsers extends Component {
           </div>
           <div className='d-grid'>
           <button type='submit' className='btn btn-primary' value='Submit'>
+          <Link to="/Users" exact title="Users" style={{color: "white"}}>
             Update User
+            </Link>
           </button>
-
-          <div><button type='delete' className='btn btn-primary' value='delete' onClick={this.onDeleteUser} style={{ backgroundColor: "red"}}>
-                <Link to="/Users" exact title="Users">
+<br></br>
+          <button type='delete' className='btn btn-primary' value='delete' onClick={this.onDeleteUser} style={{ backgroundColor: "red"}}>
+                <Link to="/Users" exact title="Users" style={{color: "white"}}>
                 Delete User
                 </Link>
-            </button></div>
+            </button>
           </div>
           </form>
           </div>

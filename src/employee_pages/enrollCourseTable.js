@@ -54,7 +54,7 @@ export default class  enrollCourseTable extends Component {
             <div className="card-action">
             
               {isCourseCompleted ? (
-                  <p>Course already completed</p>
+                  <p>Course completed</p>
                   ) : (
                   <Link className="view-link" to={"/mycourse/" + this.props.obj._id}>Take Course</Link>        
               )}

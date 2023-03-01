@@ -53,8 +53,6 @@ export default class Users extends Component {
                 <table>
                     <thead>
                         <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
                             <th>Username</th>
                             <th>Department</th>
                             <th>Access Level</th>

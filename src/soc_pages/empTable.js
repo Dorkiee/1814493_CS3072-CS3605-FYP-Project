@@ -9,8 +9,6 @@ export default class  empTable extends Component {
         return (
             <tr>
                 
-                <td>{this.props.obj.firstName}</td>
-                <td>{this.props.obj.lastName}</td>
                 <td>{this.props.obj.username}</td>
                 <td>{this.props.obj.department}</td>
                 <td>{this.props.obj.role}</td>

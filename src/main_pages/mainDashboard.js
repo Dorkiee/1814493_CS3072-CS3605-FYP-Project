@@ -2,12 +2,14 @@ import React, {Component} from "react";
 import { NavLink } from "react-router-dom";
 import DashboardNav from "./DashboardNav.js";
 import "../main_pages/CSS/dashboardCSS.css";
+import axios from "axios"
 
 export default class mainDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userData: "",
+      alluserData: "",
     };
   }  
   
@@ -31,7 +33,17 @@ export default class mainDashboard extends Component {
             console.log(data, "userData");
             this.setState({ userData: data.data})
         });
-       }
+
+
+        axios.get("http://localhost:4000/app/log-in")
+        .then(res => {
+          console.log(res, "all users");
+          this.setState({ alluserData: res.data})   
+        })
+        .catch(error => {
+          
+        });
+  }
 
     signOut = () => {
       window.localStorage.removeItem("token");
@@ -50,7 +62,25 @@ export default class mainDashboard extends Component {
         <div class="main_content">
         <div className="info">
         <div className="text_content">
-              <h1>{this.state.userData.username}</h1>
+              <h1>Welcome back, {this.state.userData.username}</h1>
+              <br></br>
+              <br></br>
+          <div className="mainCards">
+              <div className="card">
+                  <div className="chartRightCard">
+                  <div className="card1">
+                      <span className="primaryText">Number of Users:</span>
+                      <br></br>
+                      <span className="boldText">30</span>
+                      </div>
+                      <div className="card2">
+                      <span className="primaryText">Number of Courses: </span>
+                      <br></br>
+                      <span className="boldText">10</span>
+                      </div>
+                  </div>
+              </div>
+        </div>
         </div>
         </div>
         </div>

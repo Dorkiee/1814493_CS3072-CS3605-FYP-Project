@@ -7,8 +7,6 @@ class signup extends Component {
     super ()
     this.state = {
       username: '',
-      firstName: '',
-      lastName:'',
       companyName:'',
       age: '',
       department:'',
@@ -18,8 +16,6 @@ class signup extends Component {
       password: ''
     }
     this.changeUsername = this.changeUsername.bind(this)
-    this.changeFirstName = this.changeFirstName.bind(this)
-    this.changeLastName = this.changeLastName.bind(this)
     this.changeCompanyName = this.changeCompanyName.bind(this)
     this.changepassword = this.changepassword.bind(this)
     this.changeDepartment = this.changeDepartment.bind(this)
@@ -33,17 +29,6 @@ class signup extends Component {
     })
   }
 
-  changeFirstName(event) {
-    this.setState({
-      firstName:event.target.value
-    })
-  }
-
-  changeLastName(event) {
-    this.setState({
-      lastName:event.target.value
-    })
-  }
   
   changeCompanyName(event) {
     this.setState({
@@ -75,8 +60,6 @@ class signup extends Component {
     const registered = {
       registered_by: 'admin',
         username:this.state.username,
-        firstName: this.state.firstName,
-        lastName:this.state.lastName,
         companyName:this.state.companyName,
         age:this.state.age,
         role:'user',
@@ -91,8 +74,6 @@ class signup extends Component {
 
         this.setState({
           username: '',
-            firstName:'',
-            lastName:'',
             companyName: '',
             age: '',
             department:'',
@@ -130,28 +111,6 @@ class signup extends Component {
               placeholder="Username *"
               onChange={this.changeUsername}
               value={this.state.username}
-              required
-              />
-          </div>
-          <div className="mb-3">
-            <label>First Name</label>
-              <input  type="text" 
-               id="firstName"  
-               className="form-control"
-               placeholder="First Name *"
-               onChange={this.changeFirstName}
-              value={this.state.firstName}
-              required
-               />
-          </div>
-          <div className="mb-3">
-            <label>Last Name</label>
-              <input  type="text" 
-              id="lastName" 
-              className="form-control" 
-              placeholder="Last Name *"
-              onChange={this.changeLastName}
-              value={this.state.lastName}
               required
               />
           </div>
