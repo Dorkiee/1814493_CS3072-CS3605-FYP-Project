@@ -56,6 +56,7 @@ export default class Users extends Component {
                             <th>Username</th>
                             <th>Department</th>
                             <th>Access Level</th>
+                            <th>Assign Exam</th>
                             <th>Settings</th>
                         </tr>
                     </thead>

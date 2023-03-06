@@ -9,7 +9,9 @@ export default class mainDashboard extends Component {
     super(props);
     this.state = {
       userData: "",
-      alluserData: "",
+      count: 0,
+      Tcount: 0,
+      Ecount: 0,
     };
   }  
   
@@ -34,15 +36,31 @@ export default class mainDashboard extends Component {
             this.setState({ userData: data.data})
         });
 
+    axios.get("http://localhost:4000/app/users-count")
+    .then(res => {
+      this.setState({ count: res.data.count })   
+    })
+    .catch(error => {
+      
+    });
 
-        axios.get("http://localhost:4000/app/log-in")
-        .then(res => {
-          console.log(res, "all users");
-          this.setState({ alluserData: res.data})   
-        })
-        .catch(error => {
-          
-        });
+
+    axios.get("http://localhost:4000/app/task-count")
+    .then(res => {
+      this.setState({ Tcount: res.data.count })   
+    })
+    .catch(error => {
+      
+    });
+
+
+    axios.get("http://localhost:4000/app/enroll-count")
+    .then(res => {
+      this.setState({ Ecount: res.data.count })   
+    })
+    .catch(error => {
+      
+    });
   }
 
     signOut = () => {
@@ -52,8 +70,10 @@ export default class mainDashboard extends Component {
     }
 
     render () {
-      const isAdmin = this.state.userData.isAdmin;
-      console.log(isAdmin, "role");
+      const {userData} = this.state;
+      const { count } = this.state;
+      const { Tcount } = this.state;
+      const { Ecount } = this.state;
       return (
         <div>
         <nav>
@@ -62,25 +82,62 @@ export default class mainDashboard extends Component {
         <div class="main_content">
         <div className="info">
         <div className="text_content">
-              <h1>Welcome back, {this.state.userData.username}</h1>
-              <br></br>
-              <br></br>
-          <div className="mainCards">
-              <div className="card">
-                  <div className="chartRightCard">
-                  <div className="card1">
-                      <span className="primaryText">Number of Users:</span>
-                      <br></br>
-                      <span className="boldText">30</span>
-                      </div>
-                      <div className="card2">
-                      <span className="primaryText">Number of Courses: </span>
-                      <br></br>
-                      <span className="boldText">10</span>
-                      </div>
-                  </div>
-              </div>
-        </div>
+
+
+            <h1>Welcome back, {this.state.userData.username}</h1>
+            <br></br>
+            <br></br>
+
+          {userData.isAdmin &&  (
+            <>
+            <div className="courseContent">
+          <div className="cardSize">
+          <div className="insights">
+          <span class="material-symbols-outlined" style={{fontSize: "70px", textAlign: "center", color: "#2A85DF"}}>groups<p className="card-title" style={{color: "#2A85DF"}}>Number of Users</p></span>
+          <div className="card-action">
+          <h4 style={{color: "#5FA3E7"}}>{count === null ? "No registered users yet" : `${count}`}</h4>
+          </div>
+          </div>
+          </div>
+          </div>
+
+          <div className="courseContent">
+          <div className="cardSize">
+          <div className="insights">
+          <span class="material-symbols-outlined" style={{fontSize: "70px", textAlign: "center", color: "#5FA3E7"}}>task<p className="card-title" style={{color: "#5FA3E7"}}>Number of Tasks</p></span>
+          <div className="card-action">
+          <h4 style={{color: "#95C2EF"}}>{Tcount === null ? "No course created yet" : `${Tcount}`}</h4>
+          </div>
+          </div>
+          </div>
+          </div>
+          <br></br>
+          <br></br>
+          <h3 style={{textAlign: "inherit"}}>Tutorial:</h3>
+          <p>Watch this short video to teach you how to use this Learning Management System.</p>
+          </>
+         )}
+
+
+            {userData.isUser &&  (
+            <>
+            <div className="courseContent">
+          <div className="cardSize">
+          <div className="insights">
+          <span class="material-symbols-outlined" style={{fontSize: "70px", textAlign: "center", color: "#2A85DF"}}>school<p className="card-title" style={{color: "#2A85DF"}}>Courses</p></span>
+          <div className="card-action">
+          <h4 style={{color: "#5FA3E7"}}>{Ecount === null ? "No course assigned yet" : `${Ecount}`}</h4>
+          </div>
+          </div>
+          </div>
+          </div>
+          <br></br>
+          <br></br>
+          <h3 style={{textAlign: "inherit"}}>Tutorial:</h3>
+          <p>Watch this short video to teach you how to use this Learning Management System.</p>
+          </>
+         )}
+
         </div>
         </div>
         </div>

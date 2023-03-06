@@ -46,6 +46,7 @@ export default class  enrollCourseTable extends Component {
   render () {
     const { completedTasks } = this.props.obj;
     const isCourseCompleted = completedTasks.some(task => task.userName === this.state.userData.username);
+    console.log(isCourseCompleted)
     return (
       <div className="courseContent">
         <div className="cardSize">
@@ -53,9 +54,9 @@ export default class  enrollCourseTable extends Component {
             <h3 className="card-title">{this.props.obj.courseName}</h3>
             <div className="card-action">
             
-              {isCourseCompleted ? (
+              {isCourseCompleted ? ( //true
                   <p>Course completed</p>
-                  ) : (
+                  ) : ( //false
                   <Link className="view-link" to={"/mycourse/" + this.props.obj._id}>Take Course</Link>        
               )}
             </div>

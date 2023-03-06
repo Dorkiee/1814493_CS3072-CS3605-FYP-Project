@@ -45,7 +45,8 @@ export default class Training extends Component {
             <br></br>
             <div>
                 <a href="/add-course" class="border-shadow">
-                    <span class="text-gradient">Add a new course<i></i></span>
+                <span class="material-symbols-outlined">post_add</span>
+                ‏‏‎ ‎‏‏‎ ‎ ‏‏‎ ‎ Add a new course
                 </a>
             </div>
             <br></br>

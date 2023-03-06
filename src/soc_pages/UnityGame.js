@@ -4,10 +4,10 @@ import DashboardNav from "../main_pages/DashboardNav.js";
 import { useNavigate} from "react-router-dom";
 
 const unityContext = new UnityContext({
-  loaderUrl: "build/PhishGame.loader.js",
-  dataUrl: "build/PhishGame.data",
-  frameworkUrl: "build/PhishGame.framework.js",
-  codeUrl: "build/PhishGame.wasm",
+  loaderUrl: "build/GameLMS.loader.js",
+  dataUrl: "build/GameLMS.data",
+  frameworkUrl: "build/GameLMS.framework.js",
+  codeUrl: "build/GameLMS.wasm",
 });
 
 function UnityGame() {

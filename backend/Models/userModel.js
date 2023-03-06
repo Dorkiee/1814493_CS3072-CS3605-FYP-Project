@@ -89,7 +89,46 @@ const userModel = mongoose.Schema(
       type: Number,
       default: 0,
       require: false,
-    }
+    }, 
+
+    count: {
+      type: Number,
+      default: 0,
+      require: false,
+    },
+
+    examID: {
+      type: String,
+      required: false,
+    },
+
+    passed: {
+      type: Boolean,
+      default:false,
+      required: false,
+    },
+
+    selectedAnswers : [{
+      selectedOption: {
+      type: String,
+      required: false,
+      },
+      
+      userName: {
+        type: String,
+        required: false,
+      },
+
+      userScore: {
+        type: Number,
+        required: false,
+      },
+
+      passedVerdic: {
+        type: Boolean,
+        required: false,
+      }
+    }], 
 
     //have a module for completing a course
   },

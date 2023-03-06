@@ -82,6 +82,7 @@ export default class App extends Component {
           <Route path="/edits/:id" element={<EditUsers/>} />
           <Route path="/Examination-Portal" element={<ExamPortal/>}/>
           <Route path="/taskcount" element={<UsersCount/>}/>
+          <Route path="/view/:id" element={<TaskStatus/>}/>
           </>  
         )}
 
@@ -91,7 +92,7 @@ export default class App extends Component {
           <Route path="/Dashboard" element={<MainDashboard/>}/>
           <Route path="/Current-Training" element={<CurrentTraining/>}/>
           <Route path="/mycourse/:id" element={<EnrolledDetail/>}/>
-          <Route path="/Examination" element={<ExamContent/>}/>
+          <Route path="/examination/:id" element={<ExamContent/>}/>
           <Route path="/Phishing-Adventure" element={<GameCourse/>}/> {/*remove later possibly*/}
           </>
          )}

@@ -37,6 +37,10 @@ userController.post('/sign-up', async (request, response) => {
             department:request.body.department,
             isAdmin: false,
             isUser: true,
+            selectedAnswers: [],
+            score:request.body.score,
+            examID: request.body.examID,
+            passed: request.body.passed,
             password:securepassword
         })
         signedUpUser.save()
@@ -144,6 +148,32 @@ userController.get("/log-in", async (request, response, next) => {
     .catch(next);
 });
 
+userController.get('/check-username/:username', async (req, res, next) => {
+    const username = req.params.username;
+  
+    try {
+      const user = await User.findOne({ username });
+      if (!user) {
+        // Username is available
+        res.json({ isAvailable: true });
+      } else {
+        // Username is taken
+        res.json({ isAvailable: false });
+      }
+    } catch (error) {
+      next(error);
+    }
+  });
+  
+
+userController.get("/users-count", async (request, response, next) => {
+    User.countDocuments({})
+      .then(count => {
+        response.json({ count });
+      })
+      .catch(next);
+  });
+
 userController.get("/edits/:id", async (request, response, next) => {
     User.findById(request.params.id)
     .then(user => response.json(user))
@@ -172,6 +202,32 @@ userController.delete("/deleteUser/:id", async (request, response, next) => {
         response.status(404).json({ error: 'Unable to delete user from the Database' })
     );
 
+});
+
+
+userController.put("/examination/:id", async (request, response, next) => {
+    try {
+        const answer = request.body; // Get the completed task data from the request body
+        const user = await User.findByIdAndUpdate(request.params.id, request.body); // Find the user by ID
+
+        if (!user) {
+            return response.status(404).send({ error: "User not found" }); // Handle if user not found
+        }
+
+        user.answers.push(answer); // Add the completed task to the user's list
+        await user.save(); // Save the updated user document
+
+        response.send(user); // Send back the updated user document
+
+
+        const userName = await User.findById({answer})
+        if(userName) {
+            return response.json({error: "user had already completed exam"})
+        }
+
+    } catch (error) {
+        response.status(500).send({ error: "Server error" }); // Handle server errors
+    }
 });
 
 export default userController;

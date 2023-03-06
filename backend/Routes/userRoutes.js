@@ -15,6 +15,9 @@ userRoutes.get('/view/:id', userController) //change to get??
 userRoutes.put('/update/:id', userController)
 userRoutes.delete('/deleteUser/:id', userController)
 userRoutes.post('/examinationResults',userController )
+userRoutes.get('/users-count', userController) //change to get??
+userRoutes.get('/check-username/:username', userController)
+userRoutes.put('/examination/:id', userController)
 
 userRoutes.post('/enrolledcourse', curriculumController)
 userRoutes.get('/mycourses', curriculumController)
@@ -22,5 +25,6 @@ userRoutes.get('/mycourse/:id', curriculumController) //assigning users to this 
 //courseRoutes.delete('/delete-createdcourse/:id', courseController) // to remove from user's end when deleting course from admin's end??????
 userRoutes.put('/course-status/:id', curriculumController) 
 userRoutes.post('/completed-course-update/:id', curriculumController) 
+userRoutes.get('/enroll-count', curriculumController) 
 
 export default userRoutes;

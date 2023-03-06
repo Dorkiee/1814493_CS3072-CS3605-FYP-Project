@@ -60,7 +60,7 @@ export default class Users extends Component {
                 <table>
                     <thead>
                         <tr>
-                            <th>Course Name</th>
+                            <th>Courses assigned to users</th>
                             <th>Users who have completed the course</th>
                         </tr>
                     </thead>

@@ -48,6 +48,14 @@ curriculumController.get("/mycourses", async (request, response, next) => {
     .catch(err => response.status(404).json({error: "no courses found"}));
 });
 
+curriculumController.get("/enroll-count", async (request, response, next) => {
+    Enroll.countDocuments({})
+      .then(count => {
+        response.json({ count });
+      })
+      .catch(next);
+  });
+
 curriculumController.get("/mycourse/:id", async (request, response, next) => {
     Enroll.findById(request.params.id)
     .then(user => response.json(user))

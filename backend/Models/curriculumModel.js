@@ -35,6 +35,12 @@ const curriculumModel = mongoose.Schema(
 		default: 0,
 		required: false,
 	}, 
+	
+	Ecount: {
+		type: Number,
+		default: 0,
+		require: false,
+	  },
 
 	completedTasks : [{
 		userName: {

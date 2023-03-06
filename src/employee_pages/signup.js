@@ -1,118 +1,179 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import "../main_pages/CSS/signForm.css"
+import axios from 'axios';
+import "../main_pages/CSS/signForm.css";
 
 class signup extends Component {
-  constructor () {
-    super ()
+  constructor() {
+    super();
     this.state = {
       username: '',
-      companyName:'',
+      companyName: '',
       age: '',
-      department:'',
-      role:'',
+      department: '',
+      role: 'user',
       isAdmin: false,
       isUser: true,
-      password: ''
-    }
-    this.changeUsername = this.changeUsername.bind(this)
-    this.changeCompanyName = this.changeCompanyName.bind(this)
-    this.changepassword = this.changepassword.bind(this)
-    this.changeDepartment = this.changeDepartment.bind(this)
-    this.changeAge = this.changeAge.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
+      password: '',
+      errorUserMessage: '',
+      errorPinMessage: '',
+    };
+    this.changeUsername = this.changeUsername.bind(this);
+    this.changeCompanyName = this.changeCompanyName.bind(this);
+    this.changepassword = this.changepassword.bind(this);
+    this.changeDepartment = this.changeDepartment.bind(this);
+    this.changeAge = this.changeAge.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   changeUsername(event) {
     this.setState({
-      username:event.target.value
-    })
+      username: event.target.value
+    });
   }
 
-  
   changeCompanyName(event) {
     this.setState({
-      companyName:event.target.value
-    })
-  } 
+      companyName: event.target.value
+    });
+  }
 
   changepassword(event) {
     this.setState({
-      password:event.target.value
-    })
+      password: event.target.value
+    });
   }
 
   changeDepartment(event) {
     this.setState({
-      department:event.target.value
-    })
+      department: event.target.value
+    });
   }
 
   changeAge(event) {
     this.setState({
-      age:event.target.value
-    })
+      age: event.target.value
+    });
   }
 
   onSubmit(event) {
-    event.preventDefault()
-  
+    event.preventDefault();
+    const isValid = /^(?=.*[A-Za-z]{4})(?=.*\d)[A-Za-z\d]*$/.test(this.state.username);
+
+
+      if (isValid) {
     const registered = {
       registered_by: 'admin',
-        username:this.state.username,
-        companyName:this.state.companyName,
-        age:this.state.age,
-        role:'user',
-        department:this.state.department,
-        isAdmin: false,
-        isUser: true,
-        password:this.state.password
-    }
+      username: this.state.username,
+      companyName: this.state.companyName,
+      age: this.state.age,
+      role: 'user',
+      department: this.state.department,
+      isAdmin: false,
+      isUser: true,
+      password: this.state.password
+    };
 
-    axios.post('http://localhost:4000/app/sign-up', registered)
-   .then(response => console.log(response.data))
+    axios
+      .post('http://localhost:4000/app/sign-up', registered)
+      .then(response => console.log(response.data));
+  } else {
+    this.setState({
+      errorUserMessage:
+        'Username must contain at least 4 letter characters and 1 number character.'
+    });
 
-        this.setState({
-          username: '',
-            companyName: '',
-            age: '',
-            department:'',
-            role:'',
-            isAdmin: false,
-            isUser: true,
-            password: '',
-        })
+     this.setState({
+      username: '',
+      companyName: '',
+      age: '',
+      department: '',
+      role: '',
+      isAdmin: false,
+      isUser: true,
+      password: ''
+    });
+  }
+   
   }
 
-  validationpassword = event => { //testing validation, password must be higher than 4 but less than 6 for format to be submitted 
+  validateUsername = async (event) => {
+    const username = event.target.value;
+  
+    // Check if the username is valid (4 letter characters and 1 number)
+    const isValid = /^(?=.*[A-Za-z]{4})(?=.*\d)[A-Za-z\d]*$/.test(username);
+  
+    if (isValid) {
+      // Check if the username is available
+      try {
+        const response = await fetch(`http://localhost:4000/app/check-username/${username}`);
+        const data = await response.json();
+        if (data.isAvailable) {
+          // Username is available
+          this.setState({
+            errorUserMessage: '',
+            isUsernameAvailable: true,
+          });
+        } else {
+          // Username is not available
+          this.setState({
+            errorUserMessage: 'This username is already taken.',
+            isUsernameAvailable: false,
+          });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      // Username is not valid
+      this.setState({
+        errorUserMessage:
+          'Username must contain at least 4 letter characters and 1 number character.',
+        isUsernameAvailable: false,
+      });
+    }
+  };
+  
+  
+
+  validatePassword = event => {
     const password = event.target.value;
     const isValid = /^[0-9]{4,6}$/.test(password);
 
     if (isValid) {
-      this.setState({ errorMessage: '' });
+      this.setState({ errorPinMessage: '' });
     } else {
-      this.setState({ errorMessage: 'incorrect format 4-6 digits, please try again' });
+      this.setState({
+        errorPinMessage:
+          'Password must be between 4 and 6 digits long'
+      });
     }
   };
 
-
-  render () {
+  render() {
     return (
-    <div>
-      <div class="containerForm">
-        <form onSubmit={this.onSubmit} >
-          <h3 className='text-wrapper'>Sign Up Today</h3>
-          <br></br>
-          <div className='mb-3'>
+      <div>
+        <div className="containerForm">
+          <form onSubmit={this.onSubmit}>
+            <h3 className="text-wrapper">Sign Up Today</h3>
+            <br />
+            <div className="mb-3">
               <label>Username</label>
-              <input type="text" 
-              id="username" 
-              className="form-control"
-              placeholder="Username *"
-              onChange={this.changeUsername}
-              value={this.state.username}
-              required
+              <input
+                type="text"
+                id="username"
+                className="form-control"
+                placeholder="Username *"
+                pattern="[a-zA-Z]{4}[a-zA-Z0-9]*"
+                onChange={this.changeUsername}
+                value={this.state.username}
+                onBlur={this.validateUsername}
+                required
               />
+              {this.state.errorUserMessage && (
+                <div style={{color: "red"}}>
+                  {this.state.errorUserMessage}
+                </div>
+              )}
           </div>
           <div className="mb-3">
             <label>Age</label>
@@ -148,19 +209,27 @@ class signup extends Component {
               >
                 <option value="">Please select an option *</option>
                 <option value="Indivior">Indivior Employee</option>
-                <option value="brunel">Brunel Student</option>
-                <option value="public">Member of public</option>
+                <option value="Brunel">Brunel Student</option>
+                <option value="Public">Member of public</option>
                 </select>
           </div>
           <div className="mb-3"> {/* have two sign up pages -- have a drop down to select registed company -- if company not listed, send request to IT department for them to sign up?*/}
             <label>Department</label>
-              <input  type="text" 
+            <br></br>
+            <select  
               id="department" 
-              className="form-control" 
-              placeholder="Department Name"
+              className="dropdown-select" 
+              placeholder="Select an option"
               onChange={this.changeDepartment}
               value={this.state.department}
-              />
+              required
+              >
+                <option value="">Please select an option *</option>
+                <option value="Indivior: IT">Indivior: IT</option>
+                <option value="Brunel: Computer Science">Brunel: Computer Science</option>
+                <option value="Brunel">Brunel</option>
+                <option value="Public">Member of public</option>
+                </select>
           </div>
           <div className="mb-3">
             <label>Pin</label>
@@ -171,9 +240,14 @@ class signup extends Component {
               pattern="[0-9]{4,6}"
               onChange={this.changepassword}
               value={this.state.password}
-              onBlur={this.validatepassword}
+              onBlur={this.validatePassword}
               required
               />
+              {this.state.errorPinMessage && (
+                <div style={{color: "red"}}>
+                  {this.state.errorPinMessage}
+                </div>
+              )}
           </div>
           <div className='d-grid'>
           <button type='submit' className='btn btn-primary' value='Submit'>

@@ -13,6 +13,12 @@ export default class  empTable extends Component {
                 <td>{this.props.obj.department}</td>
                 <td>{this.props.obj.role}</td>
                 <td>
+                    <Link className="edit-link" to={"/view/" + this.props.obj._id}>
+                        Assign
+                    </Link>
+                    
+                </td>
+                <td>
                     <Link className="edit-link" to={"/edits/" + this.props.obj._id}>
                         Go To Settings
                     </Link>

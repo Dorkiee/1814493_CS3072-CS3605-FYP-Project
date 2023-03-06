@@ -28,6 +28,12 @@ const courseModel = mongoose.Schema(
 		type: Number,
 		required: false,
 	},
+
+	Tcount: {
+		type: Number,
+		default: 0,
+		require: false,
+	  }, 
 /*
 	CurriculumGames: {
 		type:String,

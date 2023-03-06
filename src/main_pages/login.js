@@ -43,6 +43,8 @@ class Login extends Component {
           window.localStorage.setItem("token", data.data);
           window.localStorage.setItem("isLoggedIn", true);
           window.location.href = "/Dashboard";
+        } else {
+          alert("Incorrect username or password.");
         }
       });
   }

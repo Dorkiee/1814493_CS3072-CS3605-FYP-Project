@@ -51,6 +51,14 @@ courseController.get("/courses", async (request, response, next) => {
     .catch(err => response.status(404).json({error: "no courses found"}));
 });
 
+courseController.get("/task-count", async (request, response, next) => {
+    Courses.countDocuments({})
+      .then(count => {
+        response.json({ count });
+      })
+      .catch(next);
+  });
+
 courseController.get("/course/:id", async (request, response, next) => {
     Courses.findById(request.params.id)
     .then(user => response.json(user))
