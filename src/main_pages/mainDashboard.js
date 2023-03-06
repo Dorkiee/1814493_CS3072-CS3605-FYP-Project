@@ -113,8 +113,7 @@ export default class mainDashboard extends Component {
           </div>
           <br></br>
           <br></br>
-          <h3 style={{textAlign: "inherit"}}>Tutorial:</h3>
-          <p>Watch this short video to teach you how to use this Learning Management System.</p>
+          
           </>
          )}
 
@@ -130,11 +129,28 @@ export default class mainDashboard extends Component {
           </div>
           </div>
           </div>
+
+          
+          </div>
+
+          <div className="courseContent">
+          <div className="cardSize">
+          <div className="insights">
+          <span class="material-symbols-outlined" style={{fontSize: "70px", textAlign: "center", color: "#F56476"}}>notification_important<p className="card-title" style={{color: "#F56476"}}>Days Left</p></span>
+          <div className="card-action">
+          <h4 style={{color: "#F88C99", fontSize: "18px"}}>You have until the 12th to complete all courses and the exam!</h4>
+          </div>
+          </div>
+          </div>
+
+          
           </div>
           <br></br>
           <br></br>
           <h3 style={{textAlign: "inherit"}}>Tutorial:</h3>
           <p>Watch this short video to teach you how to use this Learning Management System.</p>
+          <br></br>
+          <div><iframe width="900" height="500" src="https://www.youtube.com/embed/7KUSKPUHgnk" frameborder="0" allowFullScreen></iframe></div> 
           </>
          )}
 

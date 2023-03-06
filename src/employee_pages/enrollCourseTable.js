@@ -16,7 +16,6 @@ export default class enrollCourseTable extends Component {
     axios
       .get("http://localhost:4000/app/mycourses")
       .then((res) => {
-        console.log(res, "courseData");
         this.setState({ courseData: res.data });
       })
       .catch((error) => {});
@@ -35,7 +34,7 @@ export default class enrollCourseTable extends Component {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data, "userData");
+
         this.setState({ userData: data.data });
       });
   }
@@ -47,29 +46,24 @@ export default class enrollCourseTable extends Component {
     const { username } = this.state.userData;
     const userCompletedTasks = completedTasks.filter(task => task.userName === username);
     const isCourseCompleted = userCompletedTasks.length > 0;
-    console.log(isCourseCompleted)
 
     if (isCourseCompleted) {
       const updatedUser = { ...this.state.userData, canTakeExam: true };
       axios
         .put("http://localhost:4000/app/update/" + this.state.userData._id, updatedUser)
         .then((res) => {
-          console.log(res.data);
-          console.log("canTakeExam updated successfully");
+          
         })
         .catch((error) => {
-          console.log(error);
         });
     } else {
       const updatedUser = { ...this.state.userData, canTakeExam: false };
       axios
         .put("http://localhost:4000/app/update/" + this.state.userData._id, updatedUser)
         .then((res) => {
-          console.log(res.data);
-          console.log("canTakeExam updated successfully");
+         
         })
         .catch((error) => {
-          console.log(error);
         });
     }
     

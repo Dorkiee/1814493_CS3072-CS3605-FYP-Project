@@ -43,6 +43,7 @@ export default class  navigationHeader extends Component {
 render () {
   const loggedIn = window.localStorage.getItem("isLoggedIn");
   const isAdmin = this.state.userData.isAdmin;
+  const canTakeExam = this.state.userData.canTakeExam;
   console.log(loggedIn, "login");
 
   return (
@@ -63,7 +64,7 @@ render () {
           </>    
           ) }
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
+          <span class="material-symbols-outlined">menu</span>
           </button>
 
 <div className="collapse" id="navbarToggleExternalContent">
@@ -71,7 +72,7 @@ render () {
   {loggedIn ? (
       <>
        {isAdmin ? (
-                <div className="sidebar">
+                <div>
                   <li><a href="/Dashboard" className="active">
                     <span class="material-symbols-outlined">home</span>
                     <h6>Dashboard</h6>
@@ -90,7 +91,7 @@ render () {
                   </a></li>
                 </div>
               ) : (
-                <div className="sidebar">
+                <div>
                   <a href="/Dashboard" className="active">
                     <span class="material-symbols-outlined">home</span>
                     <h6>Dashboard</h6>
@@ -99,10 +100,16 @@ render () {
                     <span class="material-symbols-outlined">school</span>
                     <h6>Training</h6>
                   </a>
-                  <a href={"/Examination/" + this.state.userData._id}>
+
+                  {canTakeExam ? (
+                    <a href={"/Examination/" + this.state.userData._id}>
                       <span class="material-symbols-outlined">quiz</span>
                       <h6>Examination</h6>
                     </a>
+                  ) : (
+                  
+                    <></>
+                  )}
                   <a href="/" onClick={this.signOut}>
                     <span class="material-symbols-outlined">logout</span>
                     <h6>Sign out</h6>

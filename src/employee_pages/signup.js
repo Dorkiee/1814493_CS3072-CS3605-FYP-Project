@@ -58,42 +58,44 @@ class signup extends Component {
   onSubmit(event) {
     event.preventDefault();
     const isValid = /^(?=.*[A-Za-z]{4})(?=.*\d)[A-Za-z\d]*$/.test(this.state.username);
-
-
-      if (isValid) {
-    const registered = {
-      registered_by: 'admin',
-      username: this.state.username,
-      companyName: this.state.companyName,
-      age: this.state.age,
-      role: 'user',
-      department: this.state.department,
-      isAdmin: false,
-      isUser: true,
-      password: this.state.password
-    };
-
-    axios
-      .post('http://localhost:4000/app/sign-up', registered)
-      .then(response => console.log(response.data));
-  } else {
-    this.setState({
-      errorUserMessage:
-        'Username must contain at least 4 letter characters and 1 number character.'
-    });
-
-     this.setState({
-      username: '',
-      companyName: '',
-      age: '',
-      department: '',
-      role: '',
-      isAdmin: false,
-      isUser: true,
-      password: ''
-    });
-  }
-   
+  
+    if (isValid) {
+      const registered = {
+        registered_by: 'admin',
+        username: this.state.username,
+        companyName: this.state.companyName,
+        age: this.state.age,
+        role: 'user',
+        department: this.state.department,
+        isAdmin: false,
+        isUser: true,
+        password: this.state.password
+      };
+  
+      axios
+        .post('http://localhost:4000/app/sign-up', registered)
+        .then(() => {
+          window.alert('Sign up successful! Please log in.');
+          window.location.href = '/log-in';
+        })
+        .catch(error => console.error(error));
+    } else {
+      this.setState({
+        errorUserMessage:
+          'Username must contain at least 4 letter characters and 1 number character.'
+      });
+  
+      this.setState({
+        username: '',
+        companyName: '',
+        age: '',
+        department: '',
+        role: '',
+        isAdmin: false,
+        isUser: true,
+        password: ''
+      });
+    }
   }
 
   validateUsername = async (event) => {
@@ -226,6 +228,12 @@ class signup extends Component {
               >
                 <option value="">Please select an option *</option>
                 <option value="Indivior: IT">Indivior: IT</option>
+                <option value="Indivior: Legal & Governance">Indivior: Legal & Governance</option>
+                <option value="Indivior: Finance">Indivior: Finance</option>
+                <option value="Indivior: Commercial">Indivior: Commercial</option>
+                <option value="Indivior: Research & Development">Indivior: Research & Development</option>
+                <option value="Indivior: Supply">Indivior: Supply</option>
+                <option value="Indivior: Medical">Indivior: Medical</option>
                 <option value="Brunel: Computer Science">Brunel: Computer Science</option>
                 <option value="Brunel">Brunel</option>
                 <option value="Public">Member of public</option>

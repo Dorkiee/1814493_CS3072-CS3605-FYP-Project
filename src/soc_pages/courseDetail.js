@@ -173,7 +173,7 @@ class courseDetail extends Component {
 
       <div><h1>{this.state.courseName} Course</h1></div>
       <div><h3>{this.state.courseOutline}</h3></div>  
-      <div style={{ whiteSpace: "pre-wrap" }}>{this.state.curriculumContent}</div>
+      <div style={{ whiteSpace: "pre-wrap" }}><p dangerouslySetInnerHTML={{__html: this.state.curriculumContent}}></p></div>
       {isVideo  ? (
       <>
       <div><iframe width="900" height="500" src={this.state.curriculumVids} frameborder="0" allowFullScreen></iframe></div> 

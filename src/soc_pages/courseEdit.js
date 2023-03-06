@@ -3,6 +3,7 @@ import axios from 'axios';
 import "../main_pages/CSS/signForm.css"
 import DashboardNav from "../main_pages/DashboardNav.js";
 import withRouter from "./withRouter.js";
+import { CKEditor } from 'ckeditor4-react';
 
 class courseEdit extends Component {
   
@@ -50,9 +51,9 @@ class courseEdit extends Component {
     })
   }
 
-  changecurriculumContent(event) {
+  changecurriculumContent(value) {
     this.setState({
-     curriculumContent:event.target.value
+     curriculumContent:value
     })
   }
   
@@ -72,13 +73,24 @@ class courseEdit extends Component {
     curriculumContent:this.state.curriculumContent,
     curriculumVids:this.state.curriculumVids,
     };
-    axios.put('http://localhost:4000/app/update-createdcourse/' + this.props.params.id, editCourse)
+    fetch(`http://localhost:4000/app/update-createdcourse/${this.props.params.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+         Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(editCourse),
+    })
       .then((res) => {
-        console.log(res.data)
+        console.log(res)
         console.log('Course successfully updated')
-      }).catch((error) => {
-        console.log(error)
       })
+      .catch((error) => {
+        console.log(error)
+      });
+
+      
     
    
   }
@@ -118,12 +130,9 @@ class courseEdit extends Component {
               </div>
               <div className="mb-3">
                 <label>Update Content</label>
-                <textarea 
-                class="form-control" 
-                id="exampleFormControlTextarea1" 
-                rows="10"
-                onChange={this.changecurriculumContent}
-                value={this.state.curriculumContent}
+                <CKEditor
+                  data={this.state.curriculumContent}
+                  onChange={(event) => this.changecurriculumContent(event.editor.getData())}
                 />
               </div>
               <div className="mb-3"> {/* have two sign up pages -- have a drop down to select registed company -- if company not listed, send request to IT department for them to sign up?*/}

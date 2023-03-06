@@ -30,12 +30,13 @@ curriculumController.post('/enrolledcourse', async (request, response) => { //ad
         })
         asignedCourses.save()
         .then(data =>{
-            response.json(data)
+            response.send('Image uploaded successfully');
         })
         .catch (error =>{
             response.json(error)
         })
-
+        response.header("Access-Control-Allow-Origin", "*");
+        response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     } catch (error) {
         response.send({ status: "error" });
       }

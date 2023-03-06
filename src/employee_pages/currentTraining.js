@@ -28,14 +28,12 @@ export default class CurrentTraining extends Component {
             }),
         }).then((response) => response.json())
         .then((data) => {
-            console.log(data, "userData");
             this.setState({ userData: data.data})
         });
 
       
     axios.get("http://localhost:4000/app/mycourses")
     .then(response => {
-      console.log(response, "displayed all enrolled courses");
       this.setState({ courses: response.data})
     })
     .catch(error => {
@@ -57,8 +55,6 @@ export default class CurrentTraining extends Component {
     }
 
     render () {
-      const isAdmin = this.state.userData.isAdmin;
-      console.log(isAdmin, "role");
         return (
           <div>
           <nav >

@@ -139,7 +139,7 @@ class enrollDetail extends Component {
       )}
       <br></br>
       <br></br>
-      <div style={{ whiteSpace: "pre-wrap" }}>{this.state.curriculumContent}</div>
+      <div style={{ whiteSpace: "pre-wrap" }}><p dangerouslySetInnerHTML={{__html: this.state.curriculumContent}}></p></div>
       <br></br>
       {this.state.curriculumGame ? (
         /*picture of game and explanation here */

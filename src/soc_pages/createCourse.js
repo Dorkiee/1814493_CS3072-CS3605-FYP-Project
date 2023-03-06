@@ -3,6 +3,10 @@ import axios from 'axios'
 import "bootstrap/dist/css/bootstrap.min.css"
 import DashboardNav from '../main_pages/DashboardNav.js';
 import "./CSS/Table-Fourm.css"
+import { CKEditor } from 'ckeditor4-react';
+
+
+
 class createCourse extends Component {
     constructor () {
         super ()
@@ -37,9 +41,9 @@ class createCourse extends Component {
         })
       }
     
-      changecurriculumContent(event) {
+      changecurriculumContent(value) {
         this.setState({
-         curriculumContent:event.target.value
+         curriculumContent:value
         })
       }
       
@@ -68,17 +72,18 @@ class createCourse extends Component {
           //  Examinations:this.state.Examinations
         }
     
-        axios.post('http://localhost:4000/app/createcourse', courseCreate)
-       .then(response => console.log(response.data))
-    
-            this.setState({
-                courseName: '',
-                courseOutline: '',
-                curriculumContent:'',
-                curriculumVids:'',
-                curriculumGame:false,
-              //  Examinations:'',
-            })
+        fetch('http://localhost:4000/app/createcourse', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+           Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(courseCreate)
+      })
+      .then(response => console.log(response.json()))
+      .catch(error => console.error(error))
+
 
       }
     
@@ -118,13 +123,9 @@ class createCourse extends Component {
               </div>
               <div className="mb-3">
                 <label>Content</label>
-                <textarea 
-                class="form-control" 
-                id="textArea" 
-                rows="10"
-                style={{ whiteSpace: "pre-wrap" }}
-                onChange={this.changecurriculumContent}
-                value={this.state.curriculumContent}
+                <CKEditor
+                  data={this.state.curriculumContent}
+                  onChange={(event) => this.changecurriculumContent(event.editor.getData())}
                 />
               </div>
               <div className="mb-3"> {/* have two sign up pages -- have a drop down to select registed company -- if company not listed, send request to IT department for them to sign up?*/}
