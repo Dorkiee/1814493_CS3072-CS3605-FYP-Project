@@ -9,8 +9,6 @@ class editUsers extends Component {
   constructor(props) {
     super(props)
     this.state = {
-        firstName: '',
-        lastName: '',
         username: '',
         role: '',
         department: '',
@@ -19,8 +17,6 @@ class editUsers extends Component {
         completedContent : false,
         taskStatus: 0,
       }
-    this.onChangeFirstName = this.onChangeFirstName.bind(this)
-    this.onChangeLastName = this.onChangeLastName.bind(this)
     this.onChangeusername = this.onChangeusername.bind(this)
     this.onChangeRole = this.onChangeRole.bind(this)
     this.onChangeDepartment = this.onChangeDepartment.bind(this)
@@ -37,8 +33,6 @@ class editUsers extends Component {
 
         this.setState({
         username: response.data.username,
-        firstName: response.data.firstName,
-        lastName: response.data.lastName,
         role: response.data.role, 
         department: response.data.department,
         completedContent: response.data.completedContent, 
@@ -48,12 +42,6 @@ class editUsers extends Component {
       .catch((error) => {
         console.log(error);
       })
-  }
-  onChangeFirstName(event) {
-    this.setState({ firstName: event.target.value })
-  }
-  onChangeLastName(event) {
-    this.setState({ lastName: event.target.value })
   }
   onChangeusername(event) {
     this.setState({ username: event.target.value })
@@ -71,8 +59,6 @@ class editUsers extends Component {
     event.preventDefault()
 
     const editUserObject = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
       username: this.state.username,
       role: this.state.role,
       department:this.state.department,
@@ -127,26 +113,6 @@ class editUsers extends Component {
               placeholder={this.state.username}
               onChange={this.onChangeusername}
               value={this.state.username}
-              />
-          </div>
-          <div className="mb-3">
-            <label>Update First Name</label>
-              <input  type="text" 
-               id="firstName"  
-               className="form-control"
-               placeholder="First Name *"
-               onChange={this.onChangeFirstName}
-              value={this.state.firstName}
-               />
-          </div>
-          <div className="mb-3">
-            <label>Update Last Name</label>
-              <input  type="text" 
-              id="lastName" 
-              className="form-control" 
-              placeholder="Last Name *"
-              onChange={this.onChangeLastName}
-              value={this.state.lastName}
               />
           </div>
           <div className="mb-3">

@@ -15,6 +15,7 @@ class Exam extends Component {
       username: '',
       examID: '',
       passed: false,
+      takenExam: false,
       currentIndex: 0,
       score: 0,
       showAnswer: false,
@@ -24,6 +25,13 @@ class Exam extends Component {
  
   this.changeScore = this.changeScore.bind (this)
  }
+
+ componentDidUpdate(prevProps, prevState) {
+  if (this.state.currentIndex !== prevState.currentIndex) {
+    this.setState({ selectedOption: '' });
+  }
+}
+
 
  componentDidMount() {
   fetch("http://localhost:4000/app/Dashboard", {
@@ -110,7 +118,7 @@ changeScore(event) {
     {
       question: 'Is the Email in the image below authentic or a phishing email?',
       image: emailImage,
-      options: ['Phishing', 'Legitimate'],
+      options: ['Legitimate', 'Phishing'],
       answer: 'Legitimate'
     }, 
     {
@@ -122,7 +130,7 @@ changeScore(event) {
     {
       question: 'Is the Email in the image below authentic or a phishing email?',
       image: emailImage,
-      options: ['Phishing', 'Legitimate'],
+      options: ['Legitimate', 'Phishing'],
       answer: 'Phishing'
     }, 
     {
@@ -134,7 +142,7 @@ changeScore(event) {
     {
       question: 'Is the Website in the image below authentic or a phishing email?',
       image: emailImage,
-      options: ['Phishing', 'Legitimate'],
+      options: ['Legitimate', 'Phishing'],
       answer: 'Phishing'
     }, 
     {
@@ -146,7 +154,7 @@ changeScore(event) {
     {
       question: 'Is the Text Message in the image below authentic or a phishing email?',
       image: emailImage,
-      options: ['Phishing', 'Legitimate'],
+      options: ['Legitimate', 'Phishing'],
       answer: 'Phishing'
     }, 
 
@@ -158,7 +166,7 @@ changeScore(event) {
     },
     {
       question: '"Uses your first and last name to address you." - What does this generally indicate?',
-      options: ['Phishing', 'Legitimate'],
+      options: ['Legitimate', 'Phishing'],
       answer: 'Legitimate'
     },
     {
@@ -168,7 +176,7 @@ changeScore(event) {
     },
     {
       question: '"Creates an impression of urgency" - What does this generally indicate?',
-      options: ['Phishing', 'Legitimate'],
+      options: ['Legitimate', 'Phishing'],
       answer: 'Phishing'
     },
     {
@@ -178,7 +186,7 @@ changeScore(event) {
     },
     {
       question: '"Has an attachment that comes with a warning that it might be contaminated with malware that will harm your machine." - What does this generally indicate?',
-      options: ['Phishing', 'Legitimate'],
+      options: ['Legitimate', 'Phishing'],
       answer: 'Legitimate'
     },
     {
@@ -188,7 +196,7 @@ changeScore(event) {
     },
     {
       question: '"Requests that you call a number provided in the email" - What does this generally indicate?',
-      options: ['Phishing', 'Legitimate'],
+      options: ['Legitimate', 'Phishing'],
       answer: 'Phishing'
     },
 
@@ -236,6 +244,7 @@ changeScore(event) {
     const submitResults = {
       examID: this.state.userData.username,
       passed: this.state.score >= 20,
+      takenExam: true,
       score: this.state.score,
     //  userName: this.state.userData.username, // add the username property
     }
@@ -314,7 +323,7 @@ changeScore(event) {
                         <p>Your score: {score} / {this.examData.length}</p>
                         <p>Result: {result}</p>
                         <br />
-                        <button className ="view-link" onClick={this.handleFinishExam}>Finish Exam</button>
+                        <button className ="view-link" onClick={this.handleFinishExam}>Submit Score</button>
                         {score >= threshold && (
                           <>
                             <button className ="view-link" style={{background: "green"}}onClick={this.downloadCertification}>Download Certification</button>
@@ -341,7 +350,7 @@ changeScore(event) {
                 <div className="text_content">
                   <div className="mx-auto" style={{ width: '500px' }}>
 
-                  {!userData.passed && (
+                  {!userData.passed && !userData.takenExam &&(
                   
                     <form>
                       
@@ -361,17 +370,17 @@ changeScore(event) {
                           name='radio-group'
                           checked={selectedOption === option}
                           onChange={() => this.handleAnswer(option)}
-                          disabled={showAnswer}
+                         // disabled={showAnswer}
                         />
                       ))}
                       <br />
                       <br />
-                      {showAnswer && <div>{currentQuestion.answer}</div>}
+                      {/*showAnswer && <div>{currentQuestion.answer}</div>*/}
                        <Button onClick={this.handleNext} disabled={!selectedOption}>Next</Button>
                     </form>
                     )}
 
-                      {userData.passed && (
+                      {userData.passed && userData.takenExam &&(
                       <form>
                       <h1 className="alignC">Exam finished!</h1>
 
@@ -379,6 +388,20 @@ changeScore(event) {
                       <br />
                         <button className ="view-link" style={{background: "green"}}onClick={this.downloadCertification}>Download Certification</button>
                     </form>
+                   )}
+
+                    {!userData.passed && userData.takenExam &&(
+                      <form>
+                      <h1 className="alignC">Exam finished!</h1>
+
+                      <p>Your score: {userData.score} / {this.examData.length}</p>
+                      <br />
+                        
+                    </form>
+                   )}
+
+                    {userData.passed && !userData.takenExam &&(
+                      <h4>Exam not avaliable, please contact admin</h4>
                    )}
 
 

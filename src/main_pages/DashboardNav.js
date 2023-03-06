@@ -53,7 +53,7 @@ export default class DashboardNav extends Component {
 
     render() {
       const isAdmin = this.state.userData.isAdmin;
-    
+      const canTakeExam = this.state.userData.canTakeExam;
       return (
         <div>
           <p>{this.state.courseData.courseName}</p>
@@ -96,10 +96,16 @@ export default class DashboardNav extends Component {
                     <span class="material-symbols-outlined">school</span>
                     <h6>Training</h6>
                   </a>
-                  <a href={"/Examination/" + this.state.userData._id}>
+                  {canTakeExam ? (
+                    <a href={"/Examination/" + this.state.userData._id}>
                       <span class="material-symbols-outlined">quiz</span>
                       <h6>Examination</h6>
                     </a>
+                  ) : (
+                  
+                    <p>complete all courses to access exam</p>
+                  )}
+
                   <a href="/" onClick={this.signOut}>
                     <span class="material-symbols-outlined">logout</span>
                     <h6>Sign out</h6>

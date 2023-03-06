@@ -39,8 +39,10 @@ userController.post('/sign-up', async (request, response) => {
             isUser: true,
             selectedAnswers: [],
             score:request.body.score,
+            canTakeExam: request.body.canTakeExam,
             examID: request.body.examID,
             passed: request.body.passed,
+            takenExam: request.body.takenExam,
             password:securepassword
         })
         signedUpUser.save()

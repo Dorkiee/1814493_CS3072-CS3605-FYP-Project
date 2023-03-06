@@ -97,12 +97,24 @@ const userModel = mongoose.Schema(
       require: false,
     },
 
+    canTakeExam: {
+      type: Boolean,
+      required: false, 
+      default: false,
+    },
+
     examID: {
       type: String,
       required: false,
     },
 
     passed: {
+      type: Boolean,
+      default:false,
+      required: false,
+    },
+
+    takenExam: {
       type: Boolean,
       default:false,
       required: false,
