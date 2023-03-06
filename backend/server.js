@@ -16,7 +16,17 @@ dotenv.config()
 mongoose.connect(process.env.DATABASE_ACCESS, () =>console.log("Database connected") )
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: "http://localhost:3000/app/createcourse",
+})
+)
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.use('/app', userRoutes)
 app.use('/app', courseRoutes)
 app.use('/app', examRoutes)
@@ -33,4 +43,6 @@ app.use((err, req, res, next) => {
     stack: process.env.NODE_ENV === 'production' ? null : err.stack,
   })
 })
+
+
 app.listen(4000, () => console.log("server is up and running"))
