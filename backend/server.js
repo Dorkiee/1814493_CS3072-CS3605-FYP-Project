@@ -6,7 +6,7 @@ import userRoutes from './Routes/userRoutes.js'
 import courseRoutes from './Routes/courseRoutes.js'
 import cors from 'cors'
 import examRoutes from './Routes/examRoutes.js'
-
+import path from 'path'
 const app = express()
 app.use(cors());
 
@@ -42,4 +42,12 @@ app.use((err, req, res, next) => {
 })
 
 
-app.listen(4000, () => console.log("server is up and running"))
+app.listen(process.env.PORT, () => console.log("server is up and running"))
+
+//Server Production Assests
+if(process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join("build")))
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "build", "index.html"))
+  } )
+}
