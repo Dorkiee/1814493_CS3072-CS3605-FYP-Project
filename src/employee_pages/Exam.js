@@ -3,7 +3,14 @@ import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import './CSS/examCSS.css'
 import DashboardNav from "../main_pages/DashboardNav.js";
-import emailImage from "./exampictures/test.png";
+import emailImage1 from "./exampictures/1.png";
+import emailImage2 from "./exampictures/2.png";
+import emailImage3 from "./exampictures/3.png";
+import emailImage4 from "./exampictures/4.png";
+import emailImage5 from "./exampictures/5.png";
+import emailImage6 from "./exampictures/6.jpg";
+import emailImage7 from "./exampictures/7.png";
+import emailImage8 from "./exampictures/8.png";
 import axios from 'axios'
 import certificationImage from '../main_pages/MainMenuPictures/Certificate.png';
 
@@ -111,49 +118,52 @@ changeScore(event) {
 
     {
       question: 'Is the Email in the image below authentic or a phishing email?',
-      image: emailImage,
+      image: emailImage1,
       options: ['Phishing', 'Legitimate'],
       answer: 'Phishing'
     }, 
     {
       question: 'Is the Email in the image below authentic or a phishing email?',
-      image: emailImage,
+      image: emailImage2,
       options: ['Legitimate', 'Phishing'],
       answer: 'Legitimate'
     }, 
     {
       question: 'Is the Text Message in the image below authentic or a phishing email?',
-      image: emailImage,
+      image: emailImage3,
+      className: 'image-size',
       options: ['Phishing', 'Legitimate'],
       answer: 'Phishing'
     }, 
     {
       question: 'Is the Email in the image below authentic or a phishing email?',
-      image: emailImage,
+      image: emailImage4,
       options: ['Legitimate', 'Phishing'],
       answer: 'Phishing'
     }, 
     {
       question: 'Is the Website in the image below authentic or a phishing email?',
-      image: emailImage,
+      image: emailImage5,
+      className: 'image-size',
       options: ['Phishing', 'Legitimate'],
       answer: 'Phishing'
     }, 
     {
       question: 'Is the Website in the image below authentic or a phishing email?',
-      image: emailImage,
+      image: emailImage6,
       options: ['Legitimate', 'Phishing'],
       answer: 'Phishing'
     }, 
     {
-      question: 'Is the Email in the image below authentic or a phishing email?',
-      image: emailImage,
+      question: 'Is the Text Message in the image below authentic or a phishing email?',
+      image: emailImage7,
+      className: 'image-size',
       options: ['Phishing', 'Legitimate'],
       answer: 'Legitimate'
     }, 
     {
-      question: 'Is the Text Message in the image below authentic or a phishing email?',
-      image: emailImage,
+      question: 'Is the Email in the image below authentic or a phishing email?',
+      image: emailImage8,
       options: ['Legitimate', 'Phishing'],
       answer: 'Phishing'
     }, 
@@ -243,7 +253,7 @@ changeScore(event) {
   
     const submitResults = {
       examID: this.state.userData.username,
-      passed: this.state.score >= 20,
+      passed: this.state.score >= 18,
       takenExam: true,
       score: this.state.score,
     //  userName: this.state.userData.username, // add the username property
@@ -252,7 +262,7 @@ changeScore(event) {
     const selectedAnswers = this.state.selectedAnswers.map(answer => ({
       ...answer,
       userName: this.state.userData.username, // add the userName property to each answer
-      passedVerdic: this.state.score >= 20, 
+      passedVerdic: this.state.score >= 18, 
       userScore: this.state.score,
     }));
   
@@ -294,7 +304,7 @@ changeScore(event) {
     const { currentIndex, score, showAnswer, selectedOption } = this.state;
     const currentQuestion = this.examData[currentIndex];
   
-    const threshold = 20; // score threshold
+    const threshold = 18; // score threshold
 
     const {userData} = this.state;
 
@@ -357,7 +367,7 @@ changeScore(event) {
                       <h4 >{currentQuestion.question}</h4>
                       <br />
                       {currentQuestion.image && (
-                        <img src={currentQuestion.image} alt="Exam question" />
+                        <img src={currentQuestion.image} alt="Exam question" className="image-size" />
                       )}
                       <br />
                       <br />

@@ -138,7 +138,7 @@ export default class mainDashboard extends Component {
           <div className="insights">
           <span class="material-symbols-outlined" style={{fontSize: "70px", textAlign: "center", color: "#F56476"}}>notification_important<p className="card-title" style={{color: "#F56476"}}>Days Left</p></span>
           <div className="card-action">
-          <h4 style={{color: "#F88C99", fontSize: "18px"}}>You have until the 12th to complete all courses and the exam!</h4>
+          <h4 style={{color: "#F88C99", fontSize: "18px"}}>You have until the 14th to complete all courses and the exam!</h4>
           </div>
           </div>
           </div>

@@ -47,3 +47,8 @@
   .alignC {
     text-align: center;
   }
+
+  .image-size {
+    width: auto;
+    height: auto;
+  }

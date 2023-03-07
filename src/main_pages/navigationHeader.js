@@ -27,7 +27,6 @@ export default class  navigationHeader extends Component {
         
         .then((response) => response.json())
         .then((data) => {
-            console.log(data, "userData");
             this.setState({ userData: data.data})
         });
        }
@@ -44,7 +43,6 @@ render () {
   const loggedIn = window.localStorage.getItem("isLoggedIn");
   const isAdmin = this.state.userData.isAdmin;
   const canTakeExam = this.state.userData.canTakeExam;
-  console.log(loggedIn, "login");
 
   return (
     <div>

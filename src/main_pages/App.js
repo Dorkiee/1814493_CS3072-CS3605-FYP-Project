@@ -54,7 +54,6 @@ export default class App extends Component {
     
     .then((response) => response.json())
     .then((data) => {
-        console.log(data, "userData");
         this.setState({ userData: data.data})
     });
    }
