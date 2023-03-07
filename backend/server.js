@@ -6,10 +6,6 @@ import userRoutes from './Routes/userRoutes.js'
 import courseRoutes from './Routes/courseRoutes.js'
 import cors from 'cors'
 import examRoutes from './Routes/examRoutes.js'
-import courseController from './Controllers/courseController.js';
-import curriculumController from './Controllers/curriculumController.js';
-import examController from './Controllers/examController.js';
-import userController from './Controllers/userController.js';
 
 import path from 'path'
 const app = express()
@@ -32,10 +28,6 @@ app.use(function(req, res, next) {
 app.use('/app', userRoutes)
 app.use('/app', courseRoutes)
 app.use('/app', examRoutes)
-app.use('/courses', courseController)
-app.use('/mycourses', curriculumController)
-app.use('/examination', examController)
-app.use('/log-in', userController)
 app.use((req, res, next) => {
   const error = new Error(`Not found -${req.originalUrl}`)
   res.status(404)
