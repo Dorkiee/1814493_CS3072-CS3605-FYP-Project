@@ -1,11 +1,14 @@
 import express from 'express'
 import mongoose from 'mongoose';
 import courseModel from '../models/courseModel.js'
+import multer from 'multer';
 
 
 const Courses = mongoose.model("course");
 
 const courseController = express.Router();
+
+
 
 
 courseController.post('/createcourse', async (request, response) => { //admin users are able to create their own courses
@@ -23,7 +26,8 @@ courseController.post('/createcourse', async (request, response) => { //admin us
             courseOutline:request.body.courseOutline,
             curriculumContent: request.body.curriculumContent,
             curriculumVids:request.body.curriculumVids,
-            curriculumGame: request.body.curriculumGame
+            curriculumGame: request.body.curriculumGame,
+            image: request.body.image,
            // CurriculumGames:request.body.CurriculumGames,
            // totalUsers:request.body.totalUsers,
            // createdBy:request.body.createdBy,

@@ -3,7 +3,13 @@ import axios from 'axios';
 import "../main_pages/CSS/signForm.css"
 import DashboardNav from "../main_pages/DashboardNav.js";
 import withRouter from "./withRouter.js";
-import { CKEditor } from 'ckeditor4-react';
+import ReactQuill from 'react-quill';
+import { Quill } from 'react-quill';
+import ImageUploader from 'quill-image-uploader';
+import 'react-quill/dist/quill.snow.css';
+
+Quill.register('modules/imageUploader', ImageUploader);
+
 
 class courseEdit extends Component {
   
@@ -14,6 +20,8 @@ class courseEdit extends Component {
         courseOutline: '',
         curriculumContent:'',
         curriculumVids:'',
+        content: '',
+         image: null,
       }
       this.changecourseName = this.changecourseName.bind(this)
       this.changecourseOutline = this.changecourseOutline.bind(this)
@@ -51,9 +59,9 @@ class courseEdit extends Component {
     })
   }
 
-  changecurriculumContent(value) {
+  changecurriculumContent(content) {
     this.setState({
-     curriculumContent:value
+     curriculumContent:content
     })
   }
   
@@ -72,23 +80,16 @@ class courseEdit extends Component {
     courseOutline: this.state.courseOutline,
     curriculumContent:this.state.curriculumContent,
     curriculumVids:this.state.curriculumVids,
+    image: this.state.image,
     };
-    fetch(`http://localhost:4000/app/update-createdcourse/${this.props.params.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-         Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify(editCourse),
+
+    axios.put('http://localhost:4000/app/update-createdcourse/' + this.props.params.id, editCourse)
+    .then((res) => {
+      console.log(res.data)
+      console.log('Course successfully updated')
+    }).catch((error) => {
+      console.log(error)
     })
-      .then((res) => {
-        console.log(res)
-        console.log('Course successfully updated')
-      })
-      .catch((error) => {
-        console.log(error)
-      });
 
       
     
@@ -128,12 +129,15 @@ class courseEdit extends Component {
                   value={this.state.courseOutline}
                    />
               </div>
+              <p>".jpg" format only.</p>
               <div className="mb-3">
                 <label>Update Content</label>
-                <CKEditor
-                  data={this.state.curriculumContent}
-                  onChange={(event) => this.changecurriculumContent(event.editor.getData())}
-                />
+                <ReactQuill
+                modules={courseEdit.modules}
+                formats={courseEdit.formats}
+                onChange={this.changecurriculumContent}
+                value={this.state.curriculumContent}
+              />
               </div>
               <div className="mb-3"> {/* have two sign up pages -- have a drop down to select registed company -- if company not listed, send request to IT department for them to sign up?*/}
                 <label>Update Video Upload</label>
@@ -166,3 +170,39 @@ class courseEdit extends Component {
   }
 }
 export default withRouter(courseEdit);
+
+courseEdit.modules = {
+
+  toolbar: [
+  [{ header: "1" }, { header: "2" }, { header: [3, 4, 5, 6] }, { font: [] }],
+  [{ size: [] }],
+  
+  ["bold", "italic", "underline", "strike", "blockquote"],
+  [{ list: "ordered" }, { list: "bullet" }],
+  
+  ["link", "image", "video"],
+  
+  ["clean"],
+  
+  ["code-block"],
+  
+  ]
+  
+  };
+  
+  courseEdit.formats = [
+  "header",
+  "font",
+  "size",
+  "bold",
+  "italic",
+  "underline",
+  "strike",
+  "blockquote",
+  "list",
+  "bullet",
+  "link",
+  "image",
+  "video",
+  "code-block",
+  ];

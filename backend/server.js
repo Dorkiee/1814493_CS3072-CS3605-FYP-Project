@@ -8,7 +8,7 @@ import cors from 'cors'
 import examRoutes from './Routes/examRoutes.js'
 
 const app = express()
-
+app.use(cors());
 
 
 dotenv.config()
@@ -16,10 +16,7 @@ dotenv.config()
 mongoose.connect(process.env.DATABASE_ACCESS, () =>console.log("Database connected") )
 
 app.use(express.json())
-app.use(cors({
-  origin: "http://localhost:3000/app/createcourse",
-})
-)
+app.use(cors())
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

@@ -19,6 +19,11 @@ const curriculumModel = mongoose.Schema(
 		required: false,
 	},
 
+	image: { 
+		type:String,
+		required: false,
+	},
+
 	curriculumGame: {
 		type: Boolean,
 		required: false,
