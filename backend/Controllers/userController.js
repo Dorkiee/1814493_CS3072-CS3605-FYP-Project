@@ -108,7 +108,7 @@ userController.post('/log-in', async (request, response) => {
     }
 
     if(await bcrypt.compare(password, user.password)) {
-        const token = jwt.sign({username: user.username}, JWT_SECRET);
+        const token = jwt.sign({username: user.username}, process.env.JWT_SECRET);
 
         if(response.status(201)) {
             return response.json({status:"ok", data: token});
