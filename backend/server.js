@@ -8,6 +8,9 @@ import cors from 'cors'
 import examRoutes from './Routes/examRoutes.js'
 
 import path from 'path'
+
+const port = 4000
+
 const app = express()
 app.use(cors());
 
@@ -43,7 +46,7 @@ app.use((err, req, res, next) => {
 })
 
 
-app.listen(process.env.PORT, () => console.log("server is up and running"))
+app.listen(process.env.PORT || port, () => console.log("server is up and running"))
 
 //Server Production Assests
 if(process.env.NODE_ENV === "production") {
