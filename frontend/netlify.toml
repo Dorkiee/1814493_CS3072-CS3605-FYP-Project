@@ -1,0 +1,2 @@
+[build]
+  babel = { plugins = [["@babel/plugin-transform-react-jsx", { "throwIfNamespace": false, "maxFileSize": 1000000 }]] }

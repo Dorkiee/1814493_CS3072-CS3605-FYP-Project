@@ -1,7 +1,7 @@
 
 import express from 'express'
-import path from 'path'
-import courseController from path.join(__dirname, "../controllers/courseController.js")
+import courseController from "../controllers/courseController.js"
+
 const courseRoutes = express.Router()
 
 courseRoutes.post('/createcourse', courseController)
