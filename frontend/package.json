@@ -51,9 +51,9 @@
     "webpack-dev-server": "^4.11.1"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -76,7 +76,6 @@
   },
   "proxy": "http://localhost:5000",
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^4.31.0",
     "gh-pages": "^5.0.0"
   }
 }
