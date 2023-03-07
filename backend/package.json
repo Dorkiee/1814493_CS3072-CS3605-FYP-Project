@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "chmod +x node_modules/.bin/nodemon && nodemon server.js",
+    "dev": "nodemon server.js",
     "build": "npm i"
   },
   "author": "kehinde oduyeye",
