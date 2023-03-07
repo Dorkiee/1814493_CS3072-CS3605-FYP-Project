@@ -1,7 +1,7 @@
 import React from 'react'
 import {Image } from 'react-bootstrap';
 import "./CSS/HomePage.css"
-import bannerImage3 from './MainMenuPictures/banner.svg'
+import bannerImage3 from './MainMenuPictures/banner2.png'
 
 import Footer from './footer.js';
 function HomePage() {
