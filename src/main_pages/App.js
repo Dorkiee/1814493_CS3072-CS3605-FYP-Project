@@ -26,7 +26,6 @@ import GameCourse from "../soc_pages/UnityGame";
 
 import UsersCount from "../soc_pages/UsersCount";
 
-import Test from "../soc_pages/test";
 
 export default class App extends Component {
   
@@ -108,7 +107,6 @@ export default class App extends Component {
           
            </>
          )}
-         <Route path="/test" element={<Test/>}/>
           </Routes>
       </Router> 
     </div>
