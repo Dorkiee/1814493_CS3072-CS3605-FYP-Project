@@ -1,7 +1,7 @@
 
 import express from 'express'
-import userController from "../Controllers/userController"
-import curriculumController from "../Controllers/curriculumController"
+import userController from "../controllers/userController.js"
+import curriculumController from "../controllers/curriculumController.js"
 
 const userRoutes = express.Router() //add comment to include courseRoutes i think should work???
 
