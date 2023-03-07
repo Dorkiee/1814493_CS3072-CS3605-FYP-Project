@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Backend for my FYP LMS project",
-  "main": "server.js",
+  "main": "npx nodemon server.js",
   "type": "module",
   "scripts": {
     "dev": "npx nodemon server.js",
