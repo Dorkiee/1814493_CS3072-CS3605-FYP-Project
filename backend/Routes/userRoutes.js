@@ -1,8 +1,8 @@
 
 import express from 'express'
 import path from 'path'
-import userController from path.join(__dirname, '../Controllers/userController.js')
-import curriculumController from path.join(__dirname, '../Controllers/curriculumController.js')
+import userController from path.join(__dirname, '../controllers/userController.js')
+import curriculumController from path.join(__dirname, '../controllers/curriculumController.js')
 
 const userRoutes = express.Router() //add comment to include courseRoutes i think should work???
 
