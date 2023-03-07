@@ -83,7 +83,8 @@ export default class App extends Component {
           <Route path="/Examination-Portal" element={<ExamPortal/>}/>
           <Route path="/taskcount" element={<UsersCount/>}/>
           <Route path="/view/:id" element={<TaskStatus/>}/>
-          </>  
+          <Route path= "*" element={<Navigate to="/Dashboard" />}/>
+          </>
         )}
 
         {userData.isUser && (
@@ -94,17 +95,17 @@ export default class App extends Component {
           <Route path="/mycourse/:id" element={<EnrolledDetail/>}/>
           <Route path="/examination/:id" element={<ExamContent/>}/>
           <Route path="/Phishing-Adventure" element={<GameCourse/>}/> {/*remove later possibly*/}
+          <Route path= "*" element={<Navigate to="/Dashboard" />}/>
           </>
          )}
 
-        {!loggedIn && (
+        {!loggedIn && !userData.isUser && !userData.isAdmin && (
         <>
 {/*main pages*/}
           <Route path="/" element={<Home/>} />
           <Route path="/log-in" element={<Login/>} />
           <Route path="/sign-up" element={<UserSignup/>} />
           <Route path="/sign-up-admin" element={<AdminSignup/>}/>
-          
            </>
          )}
           </Routes>
