@@ -43,7 +43,7 @@ class Login extends Component {
           alert("login successful");
           window.localStorage.setItem("token", data.data);
           window.localStorage.setItem("isLoggedIn", true);
-          <Navigate to="/Dashboard" />
+          window.location.href = "https://phishshield.onrender.com/app/Dashboard"
         } else {
           alert("Incorrect username or password.");
         }
