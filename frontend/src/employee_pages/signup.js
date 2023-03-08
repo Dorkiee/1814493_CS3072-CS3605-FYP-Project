@@ -76,9 +76,7 @@ class signup extends Component {
       axios
         .post('https://phishshield-1814493.onrender.com/app/sign-up', registered)
         .then((data) => {
-          if (data.status === "ok") {
           alert('Congratulations! Your sign up was successful. Please proceed to the login page to access your account.');
-          }
         })
         .catch(error => console.error(error));
     } else {
