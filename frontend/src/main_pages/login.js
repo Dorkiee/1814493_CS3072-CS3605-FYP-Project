@@ -40,10 +40,9 @@ class Login extends Component {
       .then((data) => {
         console.log(data, "userRegister");
         if (data.status === "ok") {
-          alert("login successful");
+          alert("login successful!");
           window.localStorage.setItem("token", data.data);
           window.localStorage.setItem("isLoggedIn", true);
-          window.location.href = "https://phishshield.onrender.com/app/Dashboard"
         } else {
           alert("Incorrect username or password.");
         }

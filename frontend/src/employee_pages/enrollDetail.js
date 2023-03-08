@@ -116,7 +116,7 @@ class enrollDetail extends Component {
           completedTasks: [...prevState.completedTasks, taskData],
         }));
         console.log(response.data);
-        window.location.href = "https://phishshield.onrender.com/app/Current-Training" // Refreshing page
+        window.alert('Marked as complete, please go back to continue your training');
       });
   }
   
