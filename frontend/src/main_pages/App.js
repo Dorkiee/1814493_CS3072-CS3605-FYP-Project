@@ -73,16 +73,16 @@ export default class App extends Component {
         {userData.isAdmin &&  (
               <>
 {/*Admin pages*/}
-          <Route path="https://phishshield.onrender.com/Dashboard" element={<MainDashboard/>}/>
-          <Route path="https://phishshield.onrender.com/Training" element={<Training/>}/>
-          <Route path="https://phishshield.onrender.com/add-course" element={<CreateCourse/>}/>
-          <Route path="https://phishshield.onrender.com/course/:id" element={<CourseDetail/>}/>
-          <Route path="https://phishshield.onrender.com/update-createdcourse/:id" element={<CourseEdit/>}/>
-          <Route path="https://phishshield.onrender.com/Users" element={<ListUsers/>}/>
-          <Route path="https://phishshield.onrender.com/edits/:id" element={<EditUsers/>} />
-          <Route path="https://phishshield.onrender.com/Examination-Portal" element={<ExamPortal/>}/>
-          <Route path="https://phishshield.onrender.com/taskcount" element={<UsersCount/>}/>
-          <Route path="https://phishshield.onrender.com/view/:id" element={<TaskStatus/>}/>
+          <Route path="/Dashboard" element={<MainDashboard/>}/>
+          <Route path="/Training" element={<Training/>}/>
+          <Route path="/add-course" element={<CreateCourse/>}/>
+          <Route path="/course/:id" element={<CourseDetail/>}/>
+          <Route path="/update-createdcourse/:id" element={<CourseEdit/>}/>
+          <Route path="/Users" element={<ListUsers/>}/>
+          <Route path="/edits/:id" element={<EditUsers/>} />
+          <Route path="/Examination-Portal" element={<ExamPortal/>}/>
+          <Route path="/taskcount" element={<UsersCount/>}/>
+          <Route path="/view/:id" element={<TaskStatus/>}/>
           <Route path= "*" element={<Navigate to="/Dashboard" />}/>
           </>
         )}
@@ -90,11 +90,11 @@ export default class App extends Component {
         {userData.isUser && (
         <>
 {/*user pages */}
-          <Route path="https://phishshield.onrender.com/Dashboard" element={<MainDashboard/>}/>
-          <Route path="https://phishshield.onrender.com/Current-Training" element={<CurrentTraining/>}/>
-          <Route path="https://phishshield.onrender.com/mycourse/:id" element={<EnrolledDetail/>}/>
-          <Route path="https://phishshield.onrender.com/examination/:id" element={<ExamContent/>}/>
-          <Route path="https://phishshield.onrender.com/Phishing-Adventure" element={<GameCourse/>}/> {/*remove later possibly*/}
+          <Route path="/Dashboard" element={<MainDashboard/>}/>
+          <Route path="/Current-Training" element={<CurrentTraining/>}/>
+          <Route path="/mycourse/:id" element={<EnrolledDetail/>}/>
+          <Route path="/examination/:id" element={<ExamContent/>}/>
+          <Route path="/Phishing-Adventure" element={<GameCourse/>}/> {/*remove later possibly*/}
           <Route path= "*" element={<Navigate to="/Dashboard" />}/>
           </>
          )}
@@ -102,10 +102,10 @@ export default class App extends Component {
         {!loggedIn && !userData.isUser && !userData.isAdmin && (
         <>
 {/*main pages*/}
-          <Route path="https://phishshield.onrender.com/" element={<Home/>} />
-          <Route path="https://phishshield.onrender.com/log-in" element={<Login/>} />
-          <Route path="https://phishshield.onrender.com/sign-up" element={<UserSignup/>} />
-          <Route path="https://phishshield.onrender.com/sign-up-admin" element={<AdminSignup/>}/>
+          <Route path="/" element={<Home/>} />
+          <Route path="/log-in" element={<Login/>} />
+          <Route path="/sign-up" element={<UserSignup/>} />
+          <Route path="/sign-up-admin" element={<AdminSignup/>}/>
            </>
          )}
           </Routes>
