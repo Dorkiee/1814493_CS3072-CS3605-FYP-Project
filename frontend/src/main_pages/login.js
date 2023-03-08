@@ -22,7 +22,7 @@ class Login extends Component {
     e.preventDefault();
     const { username, password } = this.state;
     console.log(username, password);
-    fetch("http://localhost:4000/app/log-in", {
+    fetch("https://bright-moth-tux.cyclic.app/app/log-in", {
       method: "POST",
       crossDomain: true,
       headers: {
