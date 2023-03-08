@@ -74,9 +74,11 @@ class signup extends Component {
   
       axios
         .post('https://phishshield-1814493.onrender.com/app/sign-up', registered)
-        .then(() => {
+        .then((data) => {
+          if (data.status === "ok") {
           window.alert('Sign up successful! Please log in.');
-          window.location.href = 'https://phishshield.onrender.com/log-in';
+          window.location.href = 'https://phishshield.onrender.com/app/log-in';
+          }
         })
         .catch(error => console.error(error));
     } else {
