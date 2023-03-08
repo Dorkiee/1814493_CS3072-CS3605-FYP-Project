@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import "../main_pages/CSS/signForm.css";
+import { Navigate } from "react-router-dom";
 
 class signup extends Component {
   constructor() {
@@ -77,7 +78,7 @@ class signup extends Component {
         .then((data) => {
           if (data.status === "ok") {
           window.alert('Sign up successful! Please log in.');
-          window.location.href = 'https://phishshield-1814493.onrender.com/app/';
+            <Navigate to="/log-in" />
           }
         })
         .catch(error => console.error(error));

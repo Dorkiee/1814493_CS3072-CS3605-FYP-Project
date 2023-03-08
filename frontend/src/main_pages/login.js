@@ -3,6 +3,7 @@
 import { NavLink } from "react-router-dom";
 import React, { Component } from 'react';
 import "./CSS/signForm.css"
+import { Navigate } from "react-router-dom";
 
 //NEED TO DISTINGUSION WITH USER WANTS TO LOGIN AND POST THE RIGHT DATA BASED ON ROLE??? 
 //TICK "isAdmin" TO TRUE IF username MATCH ADMIN USER'S username AND LOG THEM INTO THE SOC_DASHBOARD ??
@@ -42,7 +43,7 @@ class Login extends Component {
           alert("login successful");
           window.localStorage.setItem("token", data.data);
           window.localStorage.setItem("isLoggedIn", true);
-          window.location.href = "https://phishshield-1814493.onrender.com";
+          <Navigate to="/Dashboard" />
         } else {
           alert("Incorrect username or password.");
         }

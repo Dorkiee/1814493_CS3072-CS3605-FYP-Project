@@ -6,6 +6,7 @@ import DashboardNav from "../main_pages/DashboardNav.js";
 import enrollRouter from "./enrollRouters.js";
 import editUsers from "../soc_pages/editUsers.js";
 import { Link } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 
 class enrollDetail extends Component {
   
@@ -115,7 +116,7 @@ class enrollDetail extends Component {
           completedTasks: [...prevState.completedTasks, taskData],
         }));
         console.log(response.data);
-        window.location.href = "https://phishshield-1814493.onrender.com/app/"; // Refreshing page
+        <Navigate to="/Current-Training" />; // Refreshing page
       });
   }
   
