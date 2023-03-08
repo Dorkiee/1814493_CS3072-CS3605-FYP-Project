@@ -66,7 +66,7 @@ export default class mainDashboard extends Component {
     signOut = () => {
       window.localStorage.removeItem("token");
       window.localStorage.removeItem("isLoggedIn");
-      window.localStorage.href = "/home";
+      window.localStorage.href = "https://phishshield-1814493.onrender.com/app/home";
     }
 
     render () {

@@ -45,7 +45,7 @@ export default class CurrentTraining extends Component {
     signOut = () => {
       window.localStorage.removeItem("token");
       window.localStorage.removeItem("isLoggedIn");
-      window.localStorage.href = "/";
+      window.localStorage.href = "https://phishshield-1814493.onrender.com/app/";
     }
 
     DataTable () {

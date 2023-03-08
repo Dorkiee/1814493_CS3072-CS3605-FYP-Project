@@ -45,7 +45,7 @@ export default class DashboardNav extends Component {
   signOut = () => {
     window.localStorage.removeItem("token");
     window.localStorage.removeItem("isLoggedIn");
-    window.location.href = "/";
+    window.location.href = "https://phishshield-1814493.onrender.com/app/";
   }
 
 
