@@ -116,7 +116,7 @@ class enrollDetail extends Component {
           completedTasks: [...prevState.completedTasks, taskData],
         }));
         console.log(response.data);
-        <Navigate to="/Current-Training" />; // Refreshing page
+        window.alert('Thanks for finishing the course! Kindly return to the training page to finish the remaining modules.');        // Refreshing page
       });
   }
   
