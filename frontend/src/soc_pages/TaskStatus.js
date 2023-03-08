@@ -14,7 +14,7 @@ export default class Users extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:4000/app/mycourses")
+      .get("https://phishshield-1814493.onrender.com/app/mycourses")
       .then((res) => {
         console.log(res, "courseData");
         this.setState({ courseData: res.data });
@@ -22,7 +22,7 @@ export default class Users extends Component {
       .catch((error) => {});
 
     axios
-      .get("http://localhost:4000/app/log-in")
+      .get("https://phishshield-1814493.onrender.com/app/log-in")
       .then((res) => {
         console.log(res, "userData");
         this.setState({ userData: res.data });

@@ -36,7 +36,7 @@ class courseDetail extends Component {
 
   
   componentDidMount() {
-    axios.get('http://localhost:4000/app/course/' + this.props.params.id, {
+    axios.get('https://phishshield-1814493.onrender.com/app/course/' + this.props.params.id, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -60,7 +60,7 @@ class courseDetail extends Component {
 
   onDeleteCourse = (event) =>
   {
-    axios.delete('http://localhost:4000/app/delete-createdcourse/'+ this.props.params.id, {
+    axios.delete('https://phishshield-1814493.onrender.com/app/delete-createdcourse/'+ this.props.params.id, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -88,7 +88,7 @@ class courseDetail extends Component {
       curriculumGame: this.state.curriculumGame,
     }
 
-     axios.post('http://localhost:4000/app/enrolledcourse', asignedCourses)
+     axios.post('https://phishshield-1814493.onrender.com/app/enrolledcourse', asignedCourses)
        .then(response => console.log(response.data))
     
             this.setState({

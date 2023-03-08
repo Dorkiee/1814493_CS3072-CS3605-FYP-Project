@@ -16,7 +16,7 @@ export default class mainDashboard extends Component {
   }  
   
   componentDidMount() {
-        fetch("http://localhost:4000/app/Dashboard", {
+        fetch("https://phishshield-1814493.onrender.com/app/Dashboard", {
             method: "POST",
             crossDomain: true,
             headers: {
@@ -36,7 +36,7 @@ export default class mainDashboard extends Component {
             this.setState({ userData: data.data})
         });
 
-    axios.get("http://localhost:4000/app/users-count")
+    axios.get("https://phishshield-1814493.onrender.com/app/users-count")
     .then(res => {
       this.setState({ count: res.data.count })   
     })
@@ -45,7 +45,7 @@ export default class mainDashboard extends Component {
     });
 
 
-    axios.get("http://localhost:4000/app/task-count")
+    axios.get("https://phishshield-1814493.onrender.com/app/task-count")
     .then(res => {
       this.setState({ Tcount: res.data.count })   
     })
@@ -54,7 +54,7 @@ export default class mainDashboard extends Component {
     });
 
 
-    axios.get("http://localhost:4000/app/enroll-count")
+    axios.get("https://phishshield-1814493.onrender.com/app/enroll-count")
     .then(res => {
       this.setState({ Ecount: res.data.count })   
     })

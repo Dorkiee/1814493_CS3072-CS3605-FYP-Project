@@ -15,7 +15,7 @@ export default class CurrentTraining extends Component {
   
   
   componentDidMount() {
-        fetch("http://localhost:4000/app/Dashboard", {
+        fetch("https://phishshield-1814493.onrender.com/app/Dashboard", {
             method: "POST",
             crossDomain: true,
             headers: {
@@ -32,7 +32,7 @@ export default class CurrentTraining extends Component {
         });
 
       
-    axios.get("http://localhost:4000/app/mycourses")
+    axios.get("https://phishshield-1814493.onrender.com/app/mycourses")
     .then(response => {
       this.setState({ courses: response.data})
     })

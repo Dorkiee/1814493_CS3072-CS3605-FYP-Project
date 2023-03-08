@@ -15,7 +15,7 @@ export default class lockedExamination extends Component {
   
   
   componentDidMount() {
-        fetch("http://localhost:4000/app/Dashboard", {
+        fetch("https://phishshield-1814493.onrender.com/app/Dashboard", {
             method: "POST",
             crossDomain: true,
             headers: {
@@ -33,7 +33,7 @@ export default class lockedExamination extends Component {
         });
 
       
-    axios.get("http://localhost:4000/app/mycourses")
+    axios.get("https://phishshield-1814493.onrender.com/app/mycourses")
     .then(response => {
       console.log(response, "displayed all enrolled courses");
       this.setState({ courses: response.data})

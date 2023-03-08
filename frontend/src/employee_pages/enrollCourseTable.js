@@ -14,14 +14,14 @@ export default class enrollCourseTable extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:4000/app/mycourses")
+      .get("https://phishshield-1814493.onrender.com/app/mycourses")
       .then((res) => {
         console.log(res.data)
         this.setState({ courseData: res.data });
       })
       .catch((error) => {});
 
-    fetch("http://localhost:4000/app/Dashboard", {
+    fetch("https://phishshield-1814493.onrender.com/app/Dashboard", {
       method: "POST",
       crossDomain: true,
       headers: {

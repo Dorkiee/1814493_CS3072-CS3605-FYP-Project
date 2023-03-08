@@ -13,7 +13,7 @@ export default class DashboardNav extends Component {
   }  
   
   componentDidMount() {
-    fetch('http://localhost:4000/app/mycourses')
+    fetch('https://phishshield-1814493.onrender.com/app/mycourses')
     .then(response => response.json())
     .then(data => {
       console.log(data);
@@ -24,7 +24,7 @@ export default class DashboardNav extends Component {
     });
 
     
-    fetch("http://localhost:4000/app/Dashboard", {
+    fetch("https://phishshield-1814493.onrender.com/app/Dashboard", {
       method: "POST",
       crossDomain: true,
       headers: {

@@ -13,7 +13,7 @@ export default class  displayExamination extends Component {
   }  
 
   componentDidMount() {
-    axios.get("http://localhost:4000/app/mycourses")
+    axios.get("https://phishshield-1814493.onrender.com/app/mycourses")
     .then(res => {
       console.log(res, "courseData");
       this.setState({ courseData: res.data})   
@@ -22,7 +22,7 @@ export default class  displayExamination extends Component {
       
     });
 
-    fetch("http://localhost:4000/app/Dashboard", { //change to get login instead i think
+    fetch("https://phishshield-1814493.onrender.com/app/Dashboard", { //change to get login instead i think
     method: "POST",
     crossDomain: true,
     headers: {

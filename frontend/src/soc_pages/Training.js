@@ -14,7 +14,7 @@ export default class Training extends Component {
   }  
   
   componentDidMount() {
-    axios.get("http://localhost:4000/app/courses")
+    axios.get("https://phishshield-1814493.onrender.com/app/courses")
     .then(response => {
       console.log(response, "courses");
       this.setState({ courses: response.data})

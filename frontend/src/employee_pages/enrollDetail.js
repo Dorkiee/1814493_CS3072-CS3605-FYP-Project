@@ -32,7 +32,7 @@ class enrollDetail extends Component {
 
 
   componentDidMount() {
-    fetch("http://localhost:4000/app/Dashboard", { //change to get login instead i think
+    fetch("https://phishshield-1814493.onrender.com/app/Dashboard", { //change to get login instead i think
       method: "POST",
       crossDomain: true,
       headers: {
@@ -54,7 +54,7 @@ class enrollDetail extends Component {
     
 
 
-    axios.get('http://localhost:4000/app/mycourse/' + this.props.params.id)
+    axios.get('https://phishshield-1814493.onrender.com/app/mycourse/' + this.props.params.id)
       .then(response => {
 
         this.setState({
@@ -108,7 +108,7 @@ class enrollDetail extends Component {
       completed: true
     };
   
-    axios.post('http://localhost:4000/app/completed-course-update/' + this.props.params.id, taskData)
+    axios.post('https://phishshield-1814493.onrender.com/app/completed-course-update/' + this.props.params.id, taskData)
       .then(response => {
         // Update the state to include the new task object
         this.setState(prevState => ({

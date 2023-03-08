@@ -33,7 +33,7 @@ class courseEdit extends Component {
 
   componentDidMount() {
 
-    axios.get('http://localhost:4000/app/course/' + this.props.params.id)
+    axios.get('https://phishshield-1814493.onrender.com/app/course/' + this.props.params.id)
       .then(response => {
 
         this.setState({
@@ -83,7 +83,7 @@ class courseEdit extends Component {
     image: this.state.image,
     };
 
-    axios.put('http://localhost:4000/app/update-createdcourse/' + this.props.params.id, editCourse)
+    axios.put('https://phishshield-1814493.onrender.com/app/update-createdcourse/' + this.props.params.id, editCourse)
     .then((res) => {
       console.log(res.data)
       console.log('Course successfully updated')

@@ -10,7 +10,7 @@ export default class UsersCount extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4000/app/taskcount')
+    axios.get('https://phishshield-1814493.onrender.com/app/taskcount')
       .then(res => this.setState({ count: res.data.count }))
       .catch(err => console.error(err));
   }

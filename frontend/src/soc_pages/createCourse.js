@@ -78,7 +78,7 @@ class createCourse extends Component {
           image: this.state.image,
         };
       
-        fetch('http://localhost:4000/app/createcourse', {
+        fetch('https://phishshield-1814493.onrender.com/app/createcourse', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

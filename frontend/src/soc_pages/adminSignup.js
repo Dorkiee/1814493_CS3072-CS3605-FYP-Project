@@ -77,7 +77,7 @@ class adminSignup extends Component {
         password:this.state.password
     }
 
-    axios.post('http://localhost:4000/app/sign-up-admin', registeredA)
+    axios.post('https://phishshield-1814493.onrender.com/app/sign-up-admin', registeredA)
    .then(response => console.log(response.data))
 
         this.setState({

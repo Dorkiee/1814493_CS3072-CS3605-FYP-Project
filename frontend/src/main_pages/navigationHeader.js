@@ -11,7 +11,7 @@ export default class  navigationHeader extends Component {
   }  
   
   componentDidMount() {
-        fetch("http://localhost:4000/app/Dashboard", {
+        fetch("https://phishshield-1814493.onrender.com/app/Dashboard", {
             method: "POST",
             crossDomain: true,
             headers: {

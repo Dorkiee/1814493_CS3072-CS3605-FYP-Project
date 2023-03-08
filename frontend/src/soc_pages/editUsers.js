@@ -28,7 +28,7 @@ class editUsers extends Component {
 
   componentDidMount() {
 
-    axios.get('http://localhost:4000/app/edits/' + this.props.params.id)
+    axios.get('https://phishshield-1814493.onrender.com/app/edits/' + this.props.params.id)
       .then(response => {
 
         this.setState({
@@ -63,7 +63,7 @@ class editUsers extends Component {
       role: this.state.role,
       department:this.state.department,
     };
-    axios.put('http://localhost:4000/app/update/' + this.props.params.id, editUserObject)
+    axios.put('https://phishshield-1814493.onrender.com/app/update/' + this.props.params.id, editUserObject)
       .then((res) => {
         console.log(res.data)
         console.log('User successfully updated')
@@ -76,7 +76,7 @@ class editUsers extends Component {
 
   onDeleteUser = (event) =>
   {
-    axios.delete('http://localhost:4000/app/deleteUser/'+ this.props.params.id, {
+    axios.delete('https://phishshield-1814493.onrender.com/app/deleteUser/'+ this.props.params.id, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }

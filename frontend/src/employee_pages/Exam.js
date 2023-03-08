@@ -41,7 +41,7 @@ class Exam extends Component {
 
 
  componentDidMount() {
-  fetch("http://localhost:4000/app/Dashboard", {
+  fetch("https://phishshield-1814493.onrender.com/app/Dashboard", {
       method: "POST",
       crossDomain: true,
       headers: {
@@ -268,7 +268,7 @@ changeScore(event) {
   
 
   
-    axios.put('http://localhost:4000/app/update/' + this.state.userData._id, { selectedAnswers })
+    axios.put('https://phishshield-1814493.onrender.com/app/update/' + this.state.userData._id, { selectedAnswers })
     .then((res) => {
       console.log(res.data)
       console.log('selected options successfully updated')
@@ -276,7 +276,7 @@ changeScore(event) {
       console.log(error)
     })
 
-    axios.put('http://localhost:4000/app/update/' + this.state.userData._id, submitResults)
+    axios.put('https://phishshield-1814493.onrender.com/app/update/' + this.state.userData._id, submitResults)
     .then((res) => {
       console.log(res.data)
       console.log('selected options successfully updated')
