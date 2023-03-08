@@ -280,6 +280,7 @@ changeScore(event) {
     .then((res) => {
       console.log(res.data)
       console.log('selected options successfully updated')
+      alert('Thank you for completing the exam! If you have passed, you can download your certificate. Please send me an email to inform me that you have finished.');        // Refreshing page
     }).catch((error) => {
       console.log(error)
     })
