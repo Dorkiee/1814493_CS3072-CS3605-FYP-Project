@@ -98,6 +98,7 @@ class courseDetail extends Component {
                 curriculumVids: '',
                 curriculumGame: '',
             })
+            window.location.href = "https://phishshield.onrender.com/Training";
   }
 
   onChangeCourseName(event) {

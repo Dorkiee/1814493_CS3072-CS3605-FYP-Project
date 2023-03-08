@@ -77,7 +77,8 @@ class signup extends Component {
         .post('https://phishshield-1814493.onrender.com/app/sign-up', registered)
         .then((data) => {
           if (data.status === "ok") {
-          window.alert('Sign up successful! Please go to the log in page to sign in to your account.');
+          window.alert('Sign up successful! Please log in.');
+            <Navigate to="/log-in" />
           }
         })
         .catch(error => console.error(error));
