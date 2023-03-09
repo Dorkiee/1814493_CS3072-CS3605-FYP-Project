@@ -253,7 +253,7 @@ changeScore(event) {
   
     const submitResults = {
       examID: this.state.userData.username,
-      passed: this.state.score >= 18,
+      passed: this.state.score >= 16,
       takenExam: true,
       score: this.state.score,
     //  userName: this.state.userData.username, // add the username property
@@ -262,7 +262,7 @@ changeScore(event) {
     const selectedAnswers = this.state.selectedAnswers.map(answer => ({
       ...answer,
       userName: this.state.userData.username, // add the userName property to each answer
-      passedVerdic: this.state.score >= 18, 
+      passedVerdic: this.state.score >= 16, 
       userScore: this.state.score,
     }));
   
@@ -305,7 +305,7 @@ changeScore(event) {
     const { currentIndex, score, showAnswer, selectedOption } = this.state;
     const currentQuestion = this.examData[currentIndex];
   
-    const threshold = 18; // score threshold
+    const threshold = 16; // score threshold
 
     const {userData} = this.state;
 
