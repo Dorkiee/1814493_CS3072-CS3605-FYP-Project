@@ -67,7 +67,7 @@ export default class DashboardNav extends Component {
           <aside>
             <div className="top">
               <div className="logo">
-                <span class="material-symbols-outlined"><p className="card-title" style={{textAlign: "center", fontSize: "25px", color: "#363636"}}>{this.state.userData.companyName}</p></span>
+                <span class="material-symbols-outlined"><p className="card-title" style={{textAlign: "center", fontSize: "25px", color: "#1b68b3"}}>{this.state.userData.companyName}</p></span>
 
               </div>
               <div className="close">
