@@ -84,7 +84,7 @@ export default class mainDashboard extends Component {
         <div className="text_content">
 
 
-          <span class="material-symbols-outlined"><p className="card-title" style={{textAlign: "center", fontSize: "35px", color: "#363636"}}>Welcome back, {this.state.userData.username}</p></span>
+            <p className="card-title" style={{textAlign: "center", fontSize: "30px", color: "#1b68b3"}}>Welcome back, {this.state.userData.username}</p>
             <br></br>
             <br></br>
 

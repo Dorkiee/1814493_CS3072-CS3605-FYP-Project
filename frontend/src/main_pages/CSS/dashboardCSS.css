@@ -79,7 +79,7 @@ b {
 
 aside {
   height: 100vh;
-  width: 20vh;
+  width: 30vh;
   background: #f6f5f8;
 }
 
@@ -89,7 +89,7 @@ aside .top {
   align-items: center;
   justify-content: space-between;
   margin-top: 1.4rem;
-  padding-left: 40px;
+  padding-left: 10px;
   color: #1b68b3;
 }
 
