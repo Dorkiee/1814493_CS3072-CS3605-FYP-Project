@@ -305,7 +305,7 @@ changeScore(event) {
     const { currentIndex, score, showAnswer, selectedOption } = this.state;
     const currentQuestion = this.examData[currentIndex];
   
-    const threshold = 14; // score threshold
+    const threshold = 14; // score threshold.
 
     const {userData} = this.state;
 
