@@ -68,7 +68,7 @@ b {
 
 .container {
   display: grid;
-  width:96%;
+  width:100%;
   margin:0 auto;
   gap: 1.8rem;
 }
@@ -372,7 +372,7 @@ aside .sidebar a:hover span {
 
 @media screen and (max-width: 983px){
   .container{
-    width:94%;
+    width:100%;
     display: none;
   }
 }
