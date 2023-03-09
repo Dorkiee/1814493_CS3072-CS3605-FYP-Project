@@ -192,12 +192,12 @@ changeScore(event) {
     {
       question: '"Your email system has classified this email as spam or junk mail." - What does this generally indicate?',
       options: ['Phishing', 'Legitimate'],
-      answer: 'Legitimate'
+      answer: 'Phishing'
     },
     {
       question: '"Has an attachment that comes with a warning that it might be contaminated with malware that will harm your machine." - What does this generally indicate?',
       options: ['Legitimate', 'Phishing'],
-      answer: 'Legitimate'
+      answer: 'Phishing'
     },
     {
       question: '"Takes you to a webpage with a starting https://" - What does this generally indicate?',
