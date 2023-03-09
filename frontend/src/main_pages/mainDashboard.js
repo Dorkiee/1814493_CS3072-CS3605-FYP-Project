@@ -84,7 +84,7 @@ export default class mainDashboard extends Component {
         <div className="text_content">
 
 
-            <h1>Welcome back, {this.state.userData.username}</h1>
+          <span class="material-symbols-outlined"><p className="card-title" style={{textAlign: "center", fontSize: "35px", color: "#363636"}}>Welcome back, {this.state.userData.username}</p></span>
             <br></br>
             <br></br>
 
@@ -150,7 +150,9 @@ export default class mainDashboard extends Component {
           <h3 style={{textAlign: "inherit"}}>Tutorial:</h3>
           <p>Watch this short video to teach you how to use this Learning Management System.</p>
           <br></br>
-          <div><iframe width="900" height="500" src="https://www.youtube.com/embed/7KUSKPUHgnk" frameborder="0" allowFullScreen></iframe></div> 
+          <div className="iframe-container"> 
+          <div><iframe className="responsive-iframe" src="https://www.youtube.com/embed/7KUSKPUHgnk" frameborder="0" allowFullScreen></iframe></div> 
+          </div>
           </>
          )}
 

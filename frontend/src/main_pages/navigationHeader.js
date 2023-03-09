@@ -71,47 +71,47 @@ render () {
       <>
        {isAdmin ? (
                 <div>
-                  <li><a href="/Dashboard" className="active">
+                  <li><NavLink to="/Dashboard" className="active">
                     <span class="material-symbols-outlined">home</span>
                     <h6>Dashboard</h6>
-                  </a></li>
-                  <li><a href="/Users">
+                  </NavLink></li>
+                  <li><NavLink to="/Users">
                     <span class="material-symbols-outlined">group</span>
                     <h6>Users</h6>
-                  </a></li>
-                  <li><a href="/Training">
+                  </NavLink></li>
+                  <li><NavLink to="/Training">
                     <span class="material-symbols-outlined">model_training</span>
                     <h6>Courses</h6>
-                  </a></li>
-                  <li><a href="/" onClick={this.signOut}>
+                  </NavLink></li>
+                  <li><NavLink to="/" onClick={this.signOut}>
                     <span class="material-symbols-outlined">logout</span>
                     <h6>Sign out</h6>
-                  </a></li>
+                  </NavLink></li>
                 </div>
               ) : (
                 <div>
-                  <a href="/Dashboard" className="active">
+                  <NavLink to="/Dashboard" className="active">
                     <span class="material-symbols-outlined">home</span>
                     <h6>Dashboard</h6>
-                  </a>
-                  <a href="/Current-Training">
+                  </NavLink>
+                  <NavLink to="/Current-Training">
                     <span class="material-symbols-outlined">school</span>
                     <h6>Training</h6>
-                  </a>
+                  </NavLink>
 
                   {canTakeExam ? (
-                    <a href={"/Examination/" + this.state.userData._id}>
+                    <NavLink to={"/Examination/" + this.state.userData._id}>
                       <span class="material-symbols-outlined">quiz</span>
                       <h6>Examination</h6>
-                    </a>
+                    </NavLink>
                   ) : (
                   
                     <></>
                   )}
-                  <a href="/" onClick={this.signOut}>
+                  <NavLink to="/" onClick={this.signOut}>
                     <span class="material-symbols-outlined">logout</span>
                     <h6>Sign out</h6>
-                  </a>
+                  </NavLink>
                 </div>
               )}
       </>

@@ -365,7 +365,9 @@ changeScore(event) {
                   
                     <form>
                       
-                      <h4 >{currentQuestion.question}</h4>
+                      <div class="question-container">
+                        <h4>{currentQuestion.question}</h4>
+                      </div>
                       <br />
                       {currentQuestion.image && (
                         <img src={currentQuestion.image} alt="Exam question" className="image-size" />
@@ -381,7 +383,7 @@ changeScore(event) {
                           name='radio-group'
                           checked={selectedOption === option}
                           onChange={() => this.handleAnswer(option)}
-                         // disabled={showAnswer}
+                         disabled={showAnswer}
                         />
                       ))}
                       <br />

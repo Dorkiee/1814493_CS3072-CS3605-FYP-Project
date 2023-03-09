@@ -8,9 +8,8 @@ function footer() {
     <div className="container">
           <div className="row">
               <div>
-                <h1>
-                PhishShield
-                </h1>
+     
+                <span class="material-symbols-outlined"><p className="card-title" style={{textAlign: "center", fontSize: "35px", color: "white"}}>PhishShield</p></span>
                   <div className="box-info">
                       <div className="footersocial">
                           <h3>Follow us</h3>
