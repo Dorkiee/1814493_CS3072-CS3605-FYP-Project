@@ -7,6 +7,7 @@ export default class  navigationHeader extends Component {
     super(props);
     this.state = {
       userData: "",
+      courseData: [],
     };
   }  
   
@@ -29,6 +30,15 @@ export default class  navigationHeader extends Component {
         .then((data) => {
             this.setState({ userData: data.data})
         });
+
+        fetch('https://phishshield-1814493.onrender.com/app/mycourses')
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            this.setState({ courseData: data });
+          })
+          .catch(error => {
+          });
        }
     signOut = () => {
       window.localStorage.removeItem("token");
@@ -42,8 +52,13 @@ export default class  navigationHeader extends Component {
 render () {
   const loggedIn = window.localStorage.getItem("isLoggedIn");
   const isAdmin = this.state.userData.isAdmin;
-  const canTakeExam = this.state.userData.canTakeExam;
-
+  const courses = this.state.courseData;
+  const username = this.state.userData.username;
+  const userCompletedCourses = courses.filter((course) =>
+    course.completedTasks.some((task) => task.userName === username && task.completed)
+  );
+  const allCoursesCompleted =
+    userCompletedCourses.length === courses.length;
   return (
     <div>
       <nav className="navbar navbar-expand-lg shadow" style={{ backgroundColor: 'white' }}>
@@ -99,15 +114,14 @@ render () {
                     <h6>Training</h6>
                   </NavLink>
 
-                  {canTakeExam ? (
-                    <NavLink to={"/Examination/" + this.state.userData._id}>
-                      <span class="material-symbols-outlined">quiz</span>
-                      <h6>Examination</h6>
-                    </NavLink>
-                  ) : (
-                  
-                    <></>
-                  )}
+                  {allCoursesCompleted ? (
+                  <NavLink to={"/Examination/" + this.state.userData._id} activeClassName="active">
+                    <span class="material-symbols-outlined">quiz</span>
+                    <h6>Examination</h6>
+                  </NavLink>
+                ):(
+                  <></>
+                )}
                   <NavLink to="/" onClick={this.signOut}>
                     <span class="material-symbols-outlined">logout</span>
                     <h6>Sign out</h6>
