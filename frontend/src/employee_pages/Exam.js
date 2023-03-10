@@ -327,7 +327,7 @@ changeScore(event) {
               <div className="main_content">
                 <div className="info">
                   <div className="text_content">
-                    <div className="mx-auto" style={{ width: '500px' }}>
+                    <div>
                       <form>
                         <h1 className="alignC">Exam finished!</h1>
   
