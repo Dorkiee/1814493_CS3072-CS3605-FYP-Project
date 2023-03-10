@@ -359,7 +359,7 @@ changeScore(event) {
             <div className="main_content">
               <div className="info">
                 <div className="text_content">
-                  <div className="mx-auto" style={{ width: '500px' }}>
+                  <div>
 
                   {!userData.passed && !userData.takenExam &&(
                   
