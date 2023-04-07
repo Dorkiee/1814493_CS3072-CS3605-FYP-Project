@@ -78,7 +78,7 @@ class createCourse extends Component {
           image: this.state.image,
         };
       
-        fetch('https://phishshield-1814493.onrender.com/app/createcourse', {
+         fetch('https://phishshield-1814493.onrender.com/app/createcourse', courseCreate ({
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ class createCourse extends Component {
             "Access-Control-Allow-Origin": "*",
           },
           body: JSON.stringify(courseCreate),
-        })
+        }))
         .then(response => console.log(response.json()))
         .catch(error => console.error(error));
         
