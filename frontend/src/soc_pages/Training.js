@@ -3,6 +3,7 @@ import "./CSS/courseCSS.css";
 import DashboardNav from "../main_pages/DashboardNav.js";
 import axios from "axios";
 import CourseTable from "./courseTable.js";
+import { Link } from 'react-router-dom';
 
 export default class Training extends Component {
 
@@ -44,10 +45,10 @@ export default class Training extends Component {
             <h2>Security Awareness</h2>
             <br></br>
             <div>
-                <a href="/add-course" class="border-shadow">
+                <Link to={"/add-course"} class="border-shadow">
                 <span class="material-symbols-outlined">post_add</span>
                 ‏‏‎ ‎‏‏‎ ‎ ‏‏‎ ‎ Add a new course
-                </a>
+                </Link>
             </div>
             <br></br>
           
