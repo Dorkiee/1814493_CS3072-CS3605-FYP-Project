@@ -45,9 +45,8 @@ export default class Training extends Component {
             <h2>Security Awareness</h2>
             <br></br>
             <div>
-                <Link to={"/add-course"} class="border-shadow">
-                <span class="material-symbols-outlined">post_add</span>
-                ‏‏‎ ‎‏‏‎ ‎ ‏‏‎ ‎ Add a new course
+                <Link to={"/add-course"}>
+                Add a new course
                 </Link>
             </div>
             <br></br>
