@@ -8,7 +8,7 @@ import { Quill } from 'react-quill';
 import ImageUploader from 'quill-image-uploader';
 import 'react-quill/dist/quill.snow.css';
 
-Quill.register('modules/imageUploader', ImageUploader);
+//Quill.register('modules/imageUploader', ImageUploader);
 
 class createCourse extends Component {
     constructor () {
@@ -47,9 +47,9 @@ class createCourse extends Component {
         })
       }
     
-      changecurriculumContent(content) {
+      changecurriculumContent(event) {
         this.setState({
-         curriculumContent:content
+         curriculumContent:event.target.value
         })
       }
       
@@ -138,22 +138,15 @@ class createCourse extends Component {
               <p>".jpg" format only.</p>
               <div className="mb-3">
                 <label>Content</label>
-                <ReactQuill
-                modules={createCourse.modules}
-                formats={createCourse.formats}
-                onChange={this.changecurriculumContent}
-                value={this.state.curriculumContent}
-              />
-
-                
-                {/*<textarea 
-                class="form-control" 
+                <textarea 
+                className="form-control" 
                 id="textArea" 
                 rows="10"
                 style={{ whiteSpace: "pre-wrap" }}
                 onChange={this.changecurriculumContent}
                 value={this.state.curriculumContent}
-                />*/}
+                />
+                    
               </div>
               <div className="mb-3"> {/* have two sign up pages -- have a drop down to select registed company -- if company not listed, send request to IT department for them to sign up?*/}
                 <label>Upload a video</label>
